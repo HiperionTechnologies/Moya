@@ -10,10 +10,6 @@ class Statistic extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'name', 'description',
+    	'id', 'editions', 'brands', 'customers', 'sales',
     ];
-
-    public function images(){
-    	return $this->hasMany('App\ImageStatistic','idStatistic');
-    }
 }

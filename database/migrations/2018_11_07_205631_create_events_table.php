@@ -17,12 +17,12 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name',50);
             $table->string('description',500);
-            $table->integer('idSede')->unsigned();
-            $table->foreign('idSede')
+            $table->string('image',250);
+            $table->integer('idUbication')->unsigned();
+            $table->foreign('idUbication')
                   ->references('id')
-                  ->on('sedes')
+                  ->on('ubications')
                   ->onDelete('cascade');
-            $table->string('exhibitor',3)->nullable();
             $table->timestamps();
         });
     }

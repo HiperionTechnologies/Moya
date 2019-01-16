@@ -15,7 +15,7 @@ class CreateSocialNetworkInterestedsTable extends Migration
     {
         Schema::create('social_network_interesteds', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link');
+            $table->string('link',250);
             $table->integer('idInterested')->unsigned();
             $table->foreign('idInterested')
                   ->references('id')

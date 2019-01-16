@@ -3,7 +3,7 @@
 
 <a href="{{url('event')}}" class="btn btn-danger">Regresar</a>
 
-<h2> Galeria del Evento - {{$event->name}} <a href="{{URL::action('GalleryController@create',$event->id)}}" class="btn btn-primary">Agregar imagen</a></h2>
+<h2> Galeria del Evento - {{$event->name}} <a href="{{URL::action('GalleryController@create',$event->id)}}" class="btn btn-primary">Agregar Imagenes</a></h2>
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">

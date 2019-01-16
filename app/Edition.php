@@ -10,10 +10,14 @@ class Edition extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'description', 'idEvent',
+    	'id', 'name', 'description', 'idEvent',
     ];
 
     public function event(){
     	return $this->belongsTo('App\Event','idEvent','id');
+    }
+
+    public function gallery(){
+    	return $this->hasMany('App\EditionGallery','idEvent');
     }
 }

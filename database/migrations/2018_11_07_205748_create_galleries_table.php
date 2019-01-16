@@ -15,7 +15,7 @@ class CreateGalleriesTable extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('route');
+            $table->string('route',250);
             $table->integer('idEvent')->unsigned();
             $table->foreign('idEvent')
                   ->references('id')

@@ -18,12 +18,6 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
-				{!!Form::label('idSede','Sede',['class'=>'control-label'])!!}
-				{!!Form::select('idSede',$sedes,null,['class'=>'form-control','placeholder'=>'Seleccione una sede'])!!}
-			</div>
-		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<div class="form-group">
 				{!!Form::label('date','¿Registrar Fechas? (Opcional)',['class'=>'control-label'])!!}
 			</div>
 		</div>
@@ -38,31 +32,20 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
+				{!!Form::label('image','Imagen Representativa',['class'=>'control-label'])!!}
+				<input type="file" class="form-control" name="image"/>
+			</div>
+		</div>
+		<!--<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+			<div class="form-group">
 				{!!Form::label('gallery','Galeria',['class'=>'control-label'])!!}
 				<input type="file" class="form-control" name="gallery[]" multiple />
 			</div>
-		</div>
+		</div>-->
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
-				{!!Form::label('ubication','Ubicacion del Evento',['class'=>'control-label'])!!}
-			</div>
-		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<div class="form-group">
-				{!!Form::label('street','Calle',['class'=>'control-label'])!!}
-				{!!Form::text('street',null,['class'=>'form-control','placeholder'=>'Calle'])!!}
-			</div>
-		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<div class="form-group">
-				{!!Form::label('number','Numero',['class'=>'control-label'])!!}
-				{!!Form::text('number',null,['class'=>'form-control','placeholder'=>'Numero'])!!}
-			</div>
-		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<div class="form-group">
-				{!!Form::label('colony','Colonia',['class'=>'control-label'])!!}
-				{!!Form::text('colony',null,['class'=>'form-control','placeholder'=>'Colonia'])!!}
+				{!!Form::label('idUbication','Ubicacion del Evento',['class'=>'control-label'])!!}
+				{!!Form::select('idUbication',$ubications,null,['class'=>'form-control','placeholder'=>'Seleccione una ubicacion'])!!}
 			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">

@@ -10,7 +10,7 @@ class Event extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'name', 'description', 'idSede', 'exhibitor',
+    	'id', 'name', 'description', 'image', 'idUbication',
     ];
 
     public function dates(){
@@ -21,19 +21,11 @@ class Event extends Model
     	return $this->hasMany('App\Gallery','idEvent');
     }
 
-    public function comments(){
-    	return $this->hasMany('App\Comment','idEvent');
-    }
-
     public function ubication(){
-    	return $this->hasOne('App\Ubication','idEvent');
+        return $this->belongsTo('App\Ubication','idUbication','id');
     }
 
     public function edition(){
-    	return $this->hasOne('App\Edition','idEvent');
-    }
-
-    public function sede(){
-    	return $this->belongsTo('App\Sede','idSede','id');
+    	return $this->hasMany('App\Edition','idEvent');
     }
 }

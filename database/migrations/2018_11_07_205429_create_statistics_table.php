@@ -15,8 +15,10 @@ class CreateStatisticsTable extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',50);
-            $table->string('description',500);
+            $table->string('editions',100);
+            $table->string('brands',100);
+            $table->string('customers',100);
+            $table->string('sales',100);
             $table->timestamps();
         });
     }

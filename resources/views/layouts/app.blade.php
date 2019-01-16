@@ -54,10 +54,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{url('principal-page')}}">Página Principal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('sede')}}">Sedes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('ubication')}}">Ubicaciones</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('category')}}">Categorias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('event')}}">Eventos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('statistic')}}">Estadisticas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('category')}}">Categorias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('sede')}}">Sedes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('announcement')}}">Convocatorias</a></li>
                         <!--@guest
                         @else

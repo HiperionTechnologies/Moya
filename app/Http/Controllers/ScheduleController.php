@@ -25,24 +25,10 @@ class ScheduleController extends Controller
     }
 
     public function store(Request $request, $idEvent, $idDate){
-        //return $request;
-        /*$n = 2;
-        if(request()->has('hour'.$n)){
-            return request()->hour2;
-        }
-        else{
-            return request()->time;
-        }*/
     	$schedule = Schedule::create([
     		'time' => request()->time,
     		'idDate' => $idDate,
     	]);
-
-        /*Itinerary::create([
-            'time' => $request['hour'.$num],
-            'itinerary' => $request['itinerary'.$num],
-            'idSchedule' => $schedule->id
-        ]);*/
 
         $num = 1;
         while($num != 0){   
@@ -58,20 +44,7 @@ class ScheduleController extends Controller
                 $num = 0;
             }
         }
-
-        /*for($i = 2; $i<5; $i++){
-            $num = (integer)$i;
-            //if(!empty($request['itinerary'.$num])){
-            if(request()->has('itinerary'.$num)){
-                Itinerary::create([
-                    'time' => $request['hour'.$num],
-                    'itinerary' => $request['itinerary'.$num],
-                    'idSchedule' => $schedule->id
-                ]);
-            }
-        }*/
-
-    	return redirect()->action('DateController@getSchedules',[$idEvent,$idDate]);
+    	return redirect()->action('EventController@show',[$idEvent]);
     }
 
     public function show(){
@@ -89,7 +62,7 @@ class ScheduleController extends Controller
         $schedule = Schedule::FindOrFail($id);
         $schedule->fill(request()->all());
         $schedule->update();
-        return redirect()->action('DateController@getSchedules',[$idEvent,$idDate]);
+        return redirect()->action('EventController@show',[$idEvent]);
     }
 
     public function destroy($idEvent, $idDate, $id){

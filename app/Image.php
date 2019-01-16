@@ -10,6 +10,6 @@ class Image extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'route',
+    	'id', 'name', 'title', 'description', 'route',
     ];
 }

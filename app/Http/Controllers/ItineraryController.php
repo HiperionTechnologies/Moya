@@ -51,7 +51,7 @@ class ItineraryController extends Controller
         }
         //}
 
-    	return redirect()->action('ScheduleController@getItineraries',[$idEvent,$idDate,$idSchedule]);
+    	return redirect()->action('EventController@show',[$idEvent]);
     }
 
     public function show(){
@@ -70,7 +70,7 @@ class ItineraryController extends Controller
     	$itinerary = Itinerary::findOrFail($id);
     	$itinerary->fill(request()->all());
     	$itinerary->update();
-    	return redirect()->action('ScheduleController@getItineraries',[$idEvent,$idDate,$idSchedule]);
+    	return redirect()->action('EventController@show',[$idEvent]);
     }
 
     public function destroy($idEvent,$idDate,$idSchedule,$id){

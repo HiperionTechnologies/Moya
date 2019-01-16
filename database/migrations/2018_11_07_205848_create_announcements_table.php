@@ -15,11 +15,12 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name',20);
-            $table->string('last_name',25);
+            $table->string('first_name',50);
+            $table->string('last_name',50);
             $table->string('phone',20);
             $table->string('brand',20);
             $table->string('description',500);
+            $table->string('image',250);
             $table->string('answer_moya',200);
             $table->string('organic',10);
             $table->string('local',3);

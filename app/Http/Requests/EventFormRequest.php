@@ -26,20 +26,21 @@ class EventFormRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'description' => 'required|max:500',
-            'idSede' => 'required',
-            'gallery' => 'required',
-            'street' => 'required|max:20',
-            'number' => 'required|max:10',
-            'colony' => 'required|max:20',
-            //'latitude' => 'required|max:15',
-            //'longitude' => 'required|max:15',
+            'image' => 'required|image',
+            //'gallery' => 'required',
+            'idUbication' => 'required',
         ]; 
     }
 
     public function messages(){
         return [
-            'required' => 'El campo :attribute es obligatorio',
-            'max' => 'El campo :attribute excede el limite de caracteres que puede utilizar',
+            'name.required' => 'El nombre del evento es un dato obligatorio',
+            'description.required' => 'La descripción del evento es un dato obligatorio',
+            'image.required' => 'La imagen representativa del evento es obligatoria',
+            'idUbication.required' => 'La Ubicacion del evento es un dato obligatorio',
+            'image.image' => 'El archivo seleccionado no es una imagen',
+            //'gallery.required' => 
+            'max' => 'Se ha excedido el numero maximo de caracteres',
         ];
     }
 }

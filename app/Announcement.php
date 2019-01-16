@@ -10,7 +10,7 @@ class Announcement extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'first_name', 'last_name', 'phone', 'brand', 'description', 'answer_moya', 'organic', 'local', 'artesanal', 'furniture', 'idSede', 'idCategory',
+    	'id', 'first_name', 'last_name', 'phone', 'brand', 'description', 'image', 'answer_moya', 'organic', 'local', 'artesanal', 'furniture', 'idSede', 'idCategory',
     ];
 
     public function photos(){

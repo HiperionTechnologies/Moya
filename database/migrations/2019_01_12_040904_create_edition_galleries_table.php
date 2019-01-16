@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExhibitorsTable extends Migration
+class CreateEditionGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateExhibitorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exhibitors', function (Blueprint $table) {
+        Schema::create('edition_galleries', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('route',250);
+            $table->integer('idEdition')->unsigned();
+            $table->foreign('idEdition')
+                  ->references('id')
+                  ->on('editions')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateExhibitorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exhibitors');
+        Schema::dropIfExists('edition_galleries');
     }
 }

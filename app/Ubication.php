@@ -10,11 +10,11 @@ class Ubication extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'street', 'number', 'colony', 'idSede', 'latitude', 'longitude', 'idEvent',
+    	'id', 'name', 'street', 'number', 'colony', 'idSede', 'latitude', 'longitude',
     ];
 
-    public function event(){
-    	return $this->belongsTo('App\Event','idEvent','id');
+    public function events(){
+    	return $this->hasMany('App\Event','idUbication');
     }
 
     public function sede(){

@@ -11,6 +11,7 @@ use App\Date;
 use App\Gallery;
 use App\Ubication;
 use Storage;
+use Image;
 
 class EventController extends Controller
 {
@@ -24,17 +25,29 @@ class EventController extends Controller
     }
 
     public function create(){
-    	$sedes = Sede::pluck('city','id');
-    	return view('event.create',["sedes"=>$sedes]);
+    	$ubications = Ubication::pluck('name','id');
+    	return view('event.create',["ubications"=>$ubications]);
     }
 
     public function store(EventFormRequest $request){
-    	//return request();
+        $path = Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+        $image = Image::make(request()->image);
+        $name = request()->name.$this->random_string().'.jpg';
+        if($image->height() > 1500){
+            $image->resize(1500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+        }
+        $image->save($path.$name, 70);
+        $image->destroy();
+        
     	$event = Event::create([
     		'name' => request()->name,
     		'description' => request()->description,
-    		'idSede' => request()->idSede,
-    	]);
+    		'idUbication' => request()->idUbication,
+            'image' => $name,
+        ]);
+            //'image' => Storage::disk('event')->put(request()->name, request()->image),
 
     	$num = 1;
         while($num != 0){   
@@ -50,50 +63,62 @@ class EventController extends Controller
             }
         }
 
-    	foreach(request()->gallery as $img){
-            $img = Gallery::create([
-                'route' => Storage::disk('event')->put($event->name, $img),
-                'idEvent' => $event->id
-            ]);
-        }
-
-        Ubication::create([
-            'street' => request()->street,
-            'number' => request()->number,
-            'colony' => request()->colony,
-            'idSede' => request()->idSede,
-        	'latitude' => 100,
-        	'longitude' => 100,
-        	'idEvent' => $event->id
-        ]);
+        /*if(request()->has('gallery')){
+            foreach(request()->gallery as $img){
+                $img = Gallery::create([
+                    'route' => Storage::disk('event')->put($event->name, $img),
+                    'idEvent' => $event->id
+                ]);
+            }
+        }*/
 
     	return Redirect::to('event');
     }
 
     public function show($id){
-    	$event = Event::findOrFail($id);
-    	return view('event.show',["event"=>$event]);
+    	$data["event"] = Event::findOrFail($id);
+        $data["path"] = '/events/';
+    	return view('event.show',$data);
     }
 
     public function edit($id){
-    	$event = Event::findOrFail($id);
-    	$sedes = Sede::pluck('city','id');
-    	return view('event.edit',["event"=>$event,"sedes"=>$sedes]);
+    	$data["event"] = Event::findOrFail($id);
+        $data["ubications"] = Ubication::pluck('name','id');
+    	return view('event.edit',$data);
     }
 
     public function update($id){
     	$event = Event::findOrFail($id);
-    	$event->fill(request()->all());
+        $event->name = request()->name;
+        $event->description = request()->description;
+        if(request()->image){
+            $path = Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+            $img = Image::make(request()->image);
+            $name = $event->name.$this->random_string().'.jpg';
+            if($img->height() > 1500){
+                $img->resize(1500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+            $img->save($path.$name, 70);
+            $img->destroy();
+            unlink(public_path().'/events/'.$event->image);
+            $event->image = $name;
+        }
+        $event->idUbication = request()->idUbication;
+    	//$event->fill(request()->all());
     	$event->update();
     	return Redirect::to('event');
     }
 
     public function destroy($id){
+        $event = Event::findOrFail($id);
+        unlink(public_path().'/events/'.$event->image);
     	Event::destroy($id);
-    	return Redirect::to('event');
+    	return back();//Redirect::to('event');
     }
 
-    public function getDates($id){
+    /*public function getDates($id){
     	$event = Event::findOrFail($id);
     	$dates = $event->dates;
     	return view('event.dates',["event"=>$event,"dates"=>$dates]);
@@ -116,5 +141,19 @@ class EventController extends Controller
     	$event = Event::findOrFail($id);
     	$comments = $event->comments;
     	return view('event.comments',["event"=>$event,"comments"=>$comments]);
+    }
+
+    public function edition($id){
+        $event = Event::findOrFail($id);
+        return view('edition.create',["event"=>$event]);
+    }*/
+
+    protected function random_string(){
+        $key = '';
+        $keys = array_merge(range('a','z'),range(0,9));
+        for($i=0; $i<10; $i++){
+            $key .= $keys[array_rand($keys)];
+        }    
+        return $key;
     }
 }

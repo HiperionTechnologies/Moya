@@ -8,34 +8,31 @@
 	<div class="col-lg-12 table-responsive">
 		<div class="container">
 			
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
+		<table class="table table-striped table-hover table-sm">
+			<thead class="table->dark">
+				<tr align="center">
 					<th>ID</th>
 					<th>NAME</th>
 					<th>DESCRIPTION</th>
+					<th>SEDE</th>
+					<th colspan="3">OPTIONS</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($events as $event)
-					<tr>
+					<tr align="center">
 						<td> {{$event->id}} </td>
 						<td> {{$event->name}} </td>
 						<td> {{$event->description}} </td>
+						<td> {{$event->ubication->sede->city}} </td>
+						<td>
+							<a href="{{URL::action('EventController@show',$event->id)}}" class="btn btn-primary btn-sm">Mostrar</a>
+						</td>
 						<td> 
-							<a href="{{URL::action('EventController@edit',$event->id)}}" class="btn btn-primary">Editar</a>
+							<a href="{{URL::action('EventController@edit',$event->id)}}" class="btn btn-primary btn-sm">Editar</a>
 						</td>
 						<td>
-							<a href="" class="btn btn-danger" data-target="#modal-delete-{{$event->id}}" data-toggle="modal">Delete</a>
-						</td>
-						<td>
-							<a href="{{URL::action('EventController@getDates',$event->id)}}" class="btn btn-primary">Fechas</a>
-
-							<a href="{{URL::action('EventController@getGallery',$event->id)}}" class="btn btn-primary">Galeria</a>
-
-							<a href="{{URL::action('EventController@getUbication',$event->id)}}" class="btn btn-primary">Ubicacion</a>
-
-							<a href="{{URL::action('EventController@getComments',$event->id)}}" class="btn btn-primary">Comentarios</a>
+							<a href="" class="btn btn-danger btn-sm" data-target="#modal-delete-{{$event->id}}" data-toggle="modal">Eliminar</a>
 						</td>
 					</tr>
 					@include('event.modal')

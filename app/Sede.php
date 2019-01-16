@@ -14,10 +14,14 @@ class Sede extends Model
     ];
 
     public function announcements(){
-    	return $this->hasMany('App\Announcement','idCategory');
+    	return $this->hasMany('App\Announcement','idSede');
     }
 
     public function events(){
     	return $this->hasMany('App\Event','idSede');
+    }
+
+    public function ubications(){
+        return $this->hasMany('App\Ubication','idSede');
     }
 }

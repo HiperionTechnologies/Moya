@@ -16,7 +16,7 @@ class CreateItinerariesTable extends Migration
         Schema::create('itineraries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('time',20);
-            $table->string('itinerary',30);
+            $table->string('itinerary',250);
             $table->integer('idSchedule')->unsigned();
             $table->foreign('idSchedule')
                   ->references('id')

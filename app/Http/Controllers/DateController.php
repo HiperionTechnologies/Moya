@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Date;
 use App\Event;
+use Redirect;
 
 class DateController extends Controller
 {
@@ -13,9 +14,7 @@ class DateController extends Controller
     }
 
     public function index($idEvent){
-    	/*$event = Event::findOrFail($idEvent);
-    	$dates = $event->dates;
-    	return view('date.index',["event"=>$event,"dates"=>$dates]);*/
+
     }
 
     public function create($idEvent){
@@ -43,8 +42,7 @@ class DateController extends Controller
             }
         }
 
-    	//return back();
-    	return redirect()->action('EventController@getDates', [$date->idEvent]);
+    	return redirect()->action('EventController@show', [$date->idEvent]);
     }
 
     public function show(){
@@ -52,16 +50,22 @@ class DateController extends Controller
     }
 
     public function edit($idEvent, $id){
-    	$event = Event::findOrFail($id);
-    	$date = Date::findOrFail($id);
-    	return view('date.edit',["date"=>$date,"event"=>$event]);
+    	$data["event"] = Event::findOrFail($idEvent);
+    	$data["date"] = Date::findOrFail($id);
+    	return view('date.edit',$data);
+    }
+
+    public function editar(){
+        $event = Event::findOrFail($id);
+        $date = Date::findOrFail($id);
+        return view('date.edit',["event"=>$event,"date"=>$date]);
     }
 
     public function update($idEvent, $id){
     	$date = Date::findOrFail($id);
     	$date->fill(request()->all());
     	$date->update();
-    	return redirect()->action('EventController@getDates', [$date->idEvent]);
+    	return redirect()->action('EventController@show', [$date->idEvent]);
     }
 
     public function destroy($idEvent, $id){
