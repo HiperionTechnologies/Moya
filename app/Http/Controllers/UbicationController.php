@@ -10,7 +10,7 @@ use Redirect;
 class UbicationController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -30,6 +30,8 @@ class UbicationController extends Controller
             'number' => request()->number,
             'colony' => request()->colony,
             'idSede' => request()->idSede,
+            'latitude' => request()->latitude,
+            'longitude' => request()->longitude,
         ]);
         return Redirect::to('ubication');
     }

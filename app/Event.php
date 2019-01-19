@@ -25,7 +25,7 @@ class Event extends Model
         return $this->belongsTo('App\Ubication','idUbication','id');
     }
 
-    public function edition(){
+    public function editions(){
     	return $this->hasMany('App\Edition','idEvent');
     }
 }

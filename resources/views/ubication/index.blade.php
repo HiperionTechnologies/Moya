@@ -7,20 +7,20 @@
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
+			<thead class="table-dark">
+				<tr align="center">
 					<th>ID</th>
 					<th>NOMBRE</th>
 					<th>CALLE</th>
 					<th>NUMERO</th>
 					<th>COLONIA</th>
 					<th>SEDE</th>
-					<th>OPTIONS</th>
+					<th colspan="2">OPCIONES</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($ubications as $ubication)
-					<tr>
+					<tr align="center">
 						<td> {{$ubication->id}} </td>
 						<td> {{$ubication->name}} </td>
 						<td> {{$ubication->street}} </td>

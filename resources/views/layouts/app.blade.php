@@ -54,6 +54,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav mr-auto">
+                        @guest
+                        @else
                         <li class="nav-item"><a class="nav-link" href="{{url('principal-page')}}">Página Principal</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('sede')}}">Sedes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('ubication')}}">Ubicaciones</a></li>
@@ -61,35 +63,14 @@
                         <li class="nav-item"><a class="nav-link" href="{{url('event')}}">Eventos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('statistic')}}">Estadisticas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('announcement')}}">Convocatorias</a></li>
-                        <!--@guest
-                        @else
-                        @if(Auth::user()->type == 'SUPER')
-                            <li class="nav-item"><a class="nav-link" href="{{url('sucursal')}}">Sucursales</a></li>
-                        @endif
-
-                        @if(Auth::user()->type != 'EMPLEADO')
-                            <li class="nav-item"><a class="nav-link" href="{{url('inventory')}}">Inventarios</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{url('user')}}">Usuarios</a></li>
-                        @endif
-
-                        <li class="nav-item"><a class="nav-link" href="{{url('wash-service')}}">Servicio de Lavado</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('iron-service')}}">Servicio de Planchado</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('dry-service')}}">Servicio de Tintoreria</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{url('order')}}">Pedidos</a></li>
-                        @endguest-->  
+                        <li class="nav-item"><a class="nav-link" href="{{url('interesteds')}}">Interesados</a></li>
+                        @endguest
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav mr-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
-                            </li>
+                            
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

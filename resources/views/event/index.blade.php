@@ -6,16 +6,14 @@
 </h2>
 <div class="row">
 	<div class="col-lg-12 table-responsive">
-		<div class="container">
-			
 		<table class="table table-striped table-hover table-sm">
-			<thead class="table->dark">
+			<thead class="table-dark">
 				<tr align="center">
 					<th>ID</th>
-					<th>NAME</th>
-					<th>DESCRIPTION</th>
+					<th>NOMBRE</th>
+					<th>DESCRIPCION</th>
 					<th>SEDE</th>
-					<th colspan="3">OPTIONS</th>
+					<th colspan="4">OPCIONES</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +26,9 @@
 						<td>
 							<a href="{{URL::action('EventController@show',$event->id)}}" class="btn btn-primary btn-sm">Mostrar</a>
 						</td>
+						<td>
+							<a href="{{URL::action('EventController@getEditions',$event->id)}}" class="btn btn-primary btn-sm">Ediciones</a>
+						</td>
 						<td> 
 							<a href="{{URL::action('EventController@edit',$event->id)}}" class="btn btn-primary btn-sm">Editar</a>
 						</td>
@@ -39,7 +40,6 @@
 				@endforeach
 			</tbody>
 		</table>
-		</div>
 	</div>
 </div>
 

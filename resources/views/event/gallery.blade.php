@@ -7,18 +7,17 @@
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
+			<thead class="table-dark">
+				<tr align="center">
 					<th>IMAGEN</th>
+					<th colspan="2">OPCIONES</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($gallery as $image)
-					<tr>
-						<td> {{$image->id}} </td>
+				@foreach($event->gallery as $image)
+					<tr align="center">
 						<td> 
-							<img src="{{$path.$image->route}}"> 
+							<img src="{{$path.$image->route}}" width="250" height="250"> 
 						</td>
 						<td> 
 							<a href="{{URL::action('GalleryController@edit',[$event->id,$image->id])}}" class="btn btn-primary">Editar</a>

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<h2>Nueva Edición - {{$event->name}}</h2>
+<h2>Editar Edición - {{$edition->name}} - {{$event->name}}</h2>
 <div>
-	{!!Form::open(['route'=>['edition.store',$event->id],'method'=>'POST','id'=>'edition-form'])!!}
+	{!!Form::model($edition,['route'=>['edition.update',$event->id,$edition->id],'method'=>'PATCH','id'=>'edition-form'])!!}
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
 				{!!Form::label('name','Nombre',['class'=>'control-label'])!!}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Redirect;
 use DB;
 use Storage;
+use Image as I;
 use App\Sede;
 use App\Event;
 use App\Category;
@@ -56,8 +57,10 @@ class FrontController extends Controller
     }
 
     public function comunity($sede){
-        $sede = Sede::where('city',$sede);
-        return view('front.editions',["sede"=>$sede]);
+        $data["sede"] = Sede::where('city',$sede);
+        $data["announcements"] = Announcement::all();
+        $data["path"] = '/announcements/';
+        return view('front.comunity',$data);
     }
 
     public function redirect(){
@@ -65,14 +68,42 @@ class FrontController extends Controller
         return Redirect::to($sede->city.'/');
     }
 
-    public function announcementStore($sede){
+    /*public function success(){
+
+        return view('front.success')
+    }*/
+
+    public function success($sede, $id){
+        $data["announcement"] = Announcement::findOrFail($id);
+        $data["sede"] = Sede::where('city',$sede);
+        return view('front.success',$data);
+    }
+
+    public function announcementStore($sede, Request $request){
+        //return request();
         $idSede = Sede::where('city',$sede)->first();
+        $path = 'announcements/';//Storage::disk('announcement')->getDriver()->getAdapter()->getPathPrefix();
+        $image = I::make(request()->image);
+        $name = request()->first_name.$this->random_string().'.jpg';
+        if($image->width() > 640){
+            $image->resize(640, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+        }
+        else if($image->height() > 640){
+            $image->resize(null, 640, function ($constraint) {
+                $constraint->aspectRatio();
+            });   
+        }
+        $image->save($path.$name, 70);
+
         $announcement = Announcement::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
             'phone' => request()->phone,
             'brand' => request()->brand,
             'description' => request()->description,
+            'image' => $name,
             'answer_moya' => request()->answer_moya,
             'organic' => request()->organic,
             'local' => request()->local,
@@ -98,8 +129,21 @@ class FrontController extends Controller
         }
 
         foreach(request()->photos as $photo){
+            $image = I::make($photo);
+            $name_photo = request()->first_name.$this->random_string().'.jpg';
+            if($image->width() > 1024){
+                $image->resize(1024, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+            else if($image->height() > 1024){
+                $image->resize(null, 1024, function ($constraint) {
+                    $constraint->aspectRatio();
+                });   
+            }
+            $image->save($path.$name_photo, 70);
             $photo = Photo::create([
-                'route' => Storage::disk('public')->put($announcement->first_name . " " . $announcement->last_name . " " . $announcement->brand, $photo),
+                'route' => $name_photo,
                 'idAnnouncement' => $announcement->id
             ]);
         }
@@ -127,6 +171,17 @@ class FrontController extends Controller
             }
         }
 
-        return redirect()->action('FrontController@announcements',[$sede]);
+        $image->destroy();
+
+        return redirect()->action('FrontController@success',[$sede,$announcement->id]);
+    }
+
+    protected function random_string(){
+        $key = '';
+        $keys = array_merge(range('a','z'),range(0,9));
+        for($i=0; $i<10; $i++){
+            $key .= $keys[array_rand($keys)];
+        }    
+        return $key;
     }
 }

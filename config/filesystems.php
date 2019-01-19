@@ -48,9 +48,9 @@ return [
             'root' => public_path().'/storage',//storage_path('app'),
         ],
 
-        'public' => [
+        'announcement' => [
             'driver' => 'local',
-            'root' => public_path().'/announcements',//storage_path('app/public'),
+            'root' => public_path().'/announcements',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
@@ -58,6 +58,13 @@ return [
         'event' => [
             'driver' => 'local',
             'root' => public_path().'/events',
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'edition' => [
+            'driver' => 'local',
+            'root' => public_path().'/editions',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

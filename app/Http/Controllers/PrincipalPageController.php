@@ -11,7 +11,7 @@ use Image as I;
 class PrincipalPageController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -31,17 +31,25 @@ class PrincipalPageController extends Controller
     	$image->title = request()->title;
     	$image->description = request()->description;
     	if(request()->image){
-            $path = Storage::disk('image')->getDriver()->getAdapter()->getPathPrefix();
+            $path = 'images/';//Storage::disk('image')->getDriver()->getAdapter()->getPathPrefix();
             $img = I::make(request()->image);
             $name = $image->name.$this->random_string().'.jpg';
-            if($img->height() > 1500){
-                $img->resize(1500, null, function ($constraint) {
+            if($image->width() > 1500){
+                $image->resize(1500, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             }
+            else if($image->height() > 1024){
+                $image->resize(null, 1024, function ($constraint) {
+                    $constraint->aspectRatio();
+                });   
+            }
             $img->save($path.$name, 70);
             $img->destroy();
-            unlink(public_path().'/images/'.$image->route);
+
+            if(is_file(public_path().'/images/'.$image->route)){
+                unlink(public_path().'/images/'.$image->route);
+            }
             $image->route = $name;
     	}
     	$image->update();

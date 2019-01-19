@@ -46,6 +46,12 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
+				{!!Form::label('image','Imagen Representativa',['class'=>'control-label'])!!}
+				<input type="file" class="form-control" name="image"/>
+			</div>
+		</div>
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+			<div class="form-group">
 				{!!Form::label('answer_moya','¿Por que crees que tu negocio entra en Moya?',['class'=>'control-label'])!!}
 				{!!Form::textarea('answer_moya',null,['class'=>'form-control','placeholder'=>'¿Por que crees que tu negocio entra en Moya?'])!!}
 			</div>
@@ -121,7 +127,7 @@
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
 				{!!Form::label('photo','Fotos',['class'=>'control-label'])!!}
-				<input type="file" name="photos[]" multiple />
+				<input type="file" class="form-control" name="photos[]" multiple />
 			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
@@ -239,5 +245,5 @@
 	});
 </script>
 
-{!! JsValidator::formRequest('App\Http\Requests\AnnouncementFormRequest','#sede-form') !!}
+{!! JsValidator::formRequest('App\Http\Requests\AnnouncementFormRequest','#announcement-form') !!}
 @endsection

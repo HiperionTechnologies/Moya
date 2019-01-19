@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\EditionController;
+use App\Http\Controllers\GalleryController;
+//use App\Http\Controllers\EditionGalleryController;
 use App\Http\Requests\EventFormRequest;
 use App\Event;
 use App\Sede;
@@ -17,6 +20,7 @@ class EventController extends Controller
 {
     
 	public function __construct(){
+        $this->middleware('auth');
 	}
 
     public function index(){
@@ -30,13 +34,18 @@ class EventController extends Controller
     }
 
     public function store(EventFormRequest $request){
-        $path = Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+        $path = 'events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
         $image = Image::make(request()->image);
         $name = request()->name.$this->random_string().'.jpg';
-        if($image->height() > 1500){
+        if($image->width() > 1500){
             $image->resize(1500, null, function ($constraint) {
-                $constraint->aspectRatio();
+               $constraint->aspectRatio();
             });
+        }
+        else if($image->height() > 1024){
+            $image->resize(null, 1024, function ($constraint) {
+                $constraint->aspectRatio();
+            });   
         }
         $image->save($path.$name, 70);
         $image->destroy();
@@ -92,17 +101,26 @@ class EventController extends Controller
         $event->name = request()->name;
         $event->description = request()->description;
         if(request()->image){
-            $path = Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+            $path = 'events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
             $img = Image::make(request()->image);
             $name = $event->name.$this->random_string().'.jpg';
-            if($img->height() > 1500){
-                $img->resize(1500, null, function ($constraint) {
+            if($image->width() > 1500){
+                $image->resize(1500, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             }
+            else if($image->height() > 1024){
+                $image->resize(null, 1024, function ($constraint) {
+                    $constraint->aspectRatio();
+                });   
+            }
             $img->save($path.$name, 70);
             $img->destroy();
-            unlink(public_path().'/events/'.$event->image);
+
+            if(is_file(public_path().'/events/'.$image->route)){   
+                unlink(public_path().'/events/'.$event->image);
+            }
+            
             $event->image = $name;
         }
         $event->idUbication = request()->idUbication;
@@ -113,7 +131,23 @@ class EventController extends Controller
 
     public function destroy($id){
         $event = Event::findOrFail($id);
-        unlink(public_path().'/events/'.$event->image);
+        if(is_file(public_path().'/events/'.$image->route)){
+            unlink(public_path().'/events/'.$event->image);
+        }
+
+        if(count($event->gallery) > 0){
+            foreach($event->gallery as $image){
+                //unlink(public_path().'/events/'.$image->route);
+                GalleryController::destroy($id, $image->id);
+            }
+        }
+
+        if(count($event->editions) > 0){
+            foreach($event->editions as $edition){
+                EditionController::destroy($id, $edition->id);
+            }
+        }
+
     	Event::destroy($id);
     	return back();//Redirect::to('event');
     }
@@ -122,31 +156,31 @@ class EventController extends Controller
     	$event = Event::findOrFail($id);
     	$dates = $event->dates;
     	return view('event.dates',["event"=>$event,"dates"=>$dates]);
-    }
+    }*/
 
-    public function getUbication($id){
+    /*public function getUbication($id){
     	$event = Event::findOrFail($id);
     	$ubication = $event->ubication;
     	return view('event.ubication',["event"=>$event,"ubication"=>$ubication]);
-    }
-
+    }*/
+    
     public function getGallery($id){
-    	$event = Event::findOrFail($id);
-    	$gallery = $event->gallery;
-    	$path = '/events/';
-    	return view('event.gallery',["event"=>$event,"gallery"=>$gallery,"path"=>$path]); 
+    	$data["event"] = Event::findOrFail($id);
+    	//$gallery = $event->gallery;
+    	$data["path"] = '/events/';
+    	return view('event.gallery',$data); 
     }
 
-    public function getComments($id){
+    /*public function getComments($id){
     	$event = Event::findOrFail($id);
     	$comments = $event->comments;
     	return view('event.comments',["event"=>$event,"comments"=>$comments]);
-    }
-
-    public function edition($id){
-        $event = Event::findOrFail($id);
-        return view('edition.create',["event"=>$event]);
     }*/
+
+    public function getEditions($id){
+        $event = Event::findOrFail($id);
+        return view('event.editions',["event"=>$event]);
+    }
 
     protected function random_string(){
         $key = '';

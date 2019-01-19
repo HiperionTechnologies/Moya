@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UbicationFormRequest extends FormRequest
+class UbicationEditFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,6 @@ class UbicationFormRequest extends FormRequest
             'street' => 'required|max:100',
             'colony' => 'required|max:30',
             'idSede' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ];
     }
 
@@ -40,8 +38,6 @@ class UbicationFormRequest extends FormRequest
             'colony.required' => 'La colonia es un dato obligatorio',
             'idSede.required' => 'La Sede es un dato obligatorio',
             'max' => 'Se ha excedido el numero máximo de caracteres',
-            'latitude.required' => 'Obtenga la latitud del mapa dando click en el boton: Encontrar Ubicacion',
-            'longitude.required' => 'Obtenga la longitud del mapa dando click en el boton: Encontrar Ubicacion',
         ];
     }
 }

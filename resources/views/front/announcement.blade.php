@@ -7,7 +7,7 @@
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
 				{!!Form::label('first_name','Nombre',['class'=>'control-label'])!!}
-				{!!Form::text('first_name',null,['class'=>'form-control','placeholder'=>'Nombre'])!!}
+				{!!Form::text('first_name',null,['class'=>'form-control','placeholder'=>'Nombre','id'=>'first_name'])!!}
 			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
@@ -42,6 +42,12 @@
 			<div class="form-group">
 				{!!Form::label('description','Descripcion de marca',['class'=>'control-label'])!!}
 				{!!Form::textarea('description',null,['class'=>'form-control','placeholder'=>'Descripcion de la marca'])!!}
+			</div>
+		</div>
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+			<div class="form-group">
+				{!!Form::label('image','Imagen Representativa',['class'=>'control-label'])!!}
+				<input type="file" class="form-control" name="image" id="image"/>
 			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
@@ -95,7 +101,7 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
-				{!!Form::label('furniture','¿Tiene mobiliario?',['class'=>'control-label'])!!}
+				{!!Form::label('furniture','¿Necesita de mobiliario especial para su stand?',['class'=>'control-label'])!!}
 			</div>
 			<div class="form-group">
 				{!!Form::radio('furniture', 'Si',['class'=>'form-control'])!!}
@@ -108,12 +114,6 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
-				{!!Form::label('idSede','Sede',['class'=>'control-label'])!!}
-				{!!Form::select('idSede',$sedes,null,['class'=>'form-control','placeholder'=>'Seleccione una sede'])!!}
-			</div>
-		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<div class="form-group">
 				{!!Form::label('idCategory','Categoria',['class'=>'control-label'])!!}
 				{!!Form::select('idCategory',$categories,null,['class'=>'form-control','placeholder'=>'Seleccione una categoria'])!!}
 			</div>
@@ -121,7 +121,7 @@
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
 				{!!Form::label('photo','Fotos',['class'=>'control-label'])!!}
-				<input type="file" name="photos[]" multiple />
+				<input type="file" class="form-control" name="photos[]" id="photos" onChange="validateImages()" multiple />
 			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
@@ -154,7 +154,7 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
-				{!!Form::submit('Enviar',['class'=>'btn btn-primary'])!!}
+				{!!Form::submit('Enviar',['class'=>'btn btn-primary','id'=>'form_submit'])!!}
 			</div>
 		</div>
 	{!!Form::close()!!}
@@ -236,6 +236,19 @@
 			}
 		});
 	});
+
+	function validateImages(){
+		var photos = document.getElementById("photos");
+		var images = photos.files;
+		var extensions = /(.jpg|.jpeg|.png|.gif)$/i;
+		for(var i=0;i<images.length;i++){	
+		    if(!extensions.exec(images[i].name)){
+		        alert('Uno o mas archivos seleccionados no son imagenes');
+		        photos.value = '';
+		    }
+		}
+	}
 </script>
 
+{!! JsValidator::formRequest('App\Http\Requests\AnnouncementFormRequest','#announcement-form') !!}
 @endsection

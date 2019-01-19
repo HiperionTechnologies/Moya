@@ -5,26 +5,26 @@
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
+			<thead class="table-dark">
+				<tr align="center">
 					<th>ESTADISTICA</th>
 					<th>DESCRIPCION</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr align="center">
 					<td> Ediciones </td>
 					<td> {{$statistics->editions}} </td>
 				</tr>
-				<tr>
+				<tr align="center">
 					<td> Marcas </td>
 					<td> {{$statistics->brands}} </td>
 				</tr>
-				<tr>
+				<tr align="center">
 					<td> Clientes </td>
 					<td> {{$statistics->customers}} </td>
 				</tr>
-				<tr>
+				<tr align="center">
 					<td> Ventas </td>
 					<td> {{$statistics->sales}} </td>
 				</tr>

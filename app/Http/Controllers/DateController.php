@@ -10,7 +10,7 @@ use Redirect;
 class DateController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
 
     public function index($idEvent){

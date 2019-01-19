@@ -5,8 +5,8 @@
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
+			<thead class="table-dark">
+				<tr align="center">
 					<th>IMAGEN</th>
 					<th>UBICACION</th>
 					<th>TITULO</th>
@@ -16,7 +16,7 @@
 			</thead>
 			<tbody>
 				@foreach($images as $image)
-					<tr>
+					<tr align="center">
 						<td> <img src="{{$path.$image->route}}" width="300" height="200"> </td> 
 						<td> {{$image->name}}</td>
 						<td> {{$image->title}} </td>

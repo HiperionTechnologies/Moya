@@ -7,15 +7,16 @@
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
+			<thead class="table-dark">
+				<tr align="center">
 					<th>ID</th>
-					<th>CITY</th>
+					<th>CIUDAD</th>
+					<th colspan="2">OPCIONES</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($sedes as $sede)
-					<tr>
+					<tr align="center">
 						<td> {{$sede->id}} </td>
 						<td> {{$sede->city}} </td>
 						<td> 

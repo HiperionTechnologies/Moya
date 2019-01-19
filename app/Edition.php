@@ -18,6 +18,6 @@ class Edition extends Model
     }
 
     public function gallery(){
-    	return $this->hasMany('App\EditionGallery','idEvent');
+    	return $this->hasMany('App\EditionGallery','idEdition');
     }
 }

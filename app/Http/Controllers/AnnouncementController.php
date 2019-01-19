@@ -17,7 +17,7 @@ use Storage;
 class AnnouncementController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -96,8 +96,10 @@ class AnnouncementController extends Controller
     	return Redirect::to('announcement');
     }
 
-    public function show(){
-
+    public function show($id){
+        $data["announcement"] = Announcement::findOrFail($id);
+        $data["path"] = '/announcements/';
+        return view('announcement.show',$data);
     }
 
     public function edit(){
@@ -111,11 +113,14 @@ class AnnouncementController extends Controller
     public function destroy($id){
         $announcement = Announcement::findOrFail($id);
         $photos = $announcement->photos;
-        $folder = explode('/',$photos[0]->route);
-        foreach($photos as $photo){
-            unlink(public_path().'/announcements/'.$photo->route);
+        if(is_file(public_path().'/announcements/'.$image->route)){
+            unlink(public_path().'/announcements/'.$announcement->image);
         }
-        rmdir(public_path().'/announcements/'.$folder[0]);
+        foreach($photos as $photo){
+            if(is_file(public_path().'/announcements/'.$image->route)){
+                unlink(public_path().'/announcements/'.$photo->route);
+            }
+        }
         Announcement::destroy($id);
         return Redirect::to('announcement');
     }
