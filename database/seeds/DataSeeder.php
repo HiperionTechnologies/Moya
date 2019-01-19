@@ -30,5 +30,9 @@ class DataSeeder extends Seeder
         	'description' => 'Ingrese una descripción',
         	'route' => 'banner.jpg',
         ]);
+
+        DB::table('sedes')->insert([
+            'city' => 'Saltillo',
+        ]);
     }
 }
