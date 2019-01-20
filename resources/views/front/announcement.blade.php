@@ -240,12 +240,18 @@
 	function validateImages(){
 		var photos = document.getElementById("photos");
 		var images = photos.files;
-		var extensions = /(.jpg|.jpeg|.png|.gif)$/i;
-		for(var i=0;i<images.length;i++){	
-		    if(!extensions.exec(images[i].name)){
-		        alert('Uno o mas archivos seleccionados no son imagenes');
-		        photos.value = '';
-		    }
+		var extensions = /(.jpg|.jpeg|.png)$/i;
+		if(images.length < 4){
+			for(var i=0;i<images.length;i++){	
+			    if(!extensions.exec(images[i].name)){
+			        alert('Uno o mas archivos seleccionados no son imagenes');
+			        photos.value = '';
+			    }
+			}
+		}
+		else{
+			alert('Has excedido el numero maximo de imagenes');
+			photos.value = '';
 		}
 	}
 </script>

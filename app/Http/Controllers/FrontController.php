@@ -74,9 +74,18 @@ class FrontController extends Controller
     }*/
 
     public function success($sede, $id){
-        $data["announcement"] = Announcement::findOrFail($id);
+        $announcement = Announcement::findOrFail($id);
+        $date = $announcement->created_at; //date('Y-m-d H:i:s');
+        $limit_date = strtotime('+5 minute', strtotime($date));
+        $limit_date = date('Y-m-d H:i:s',$limit_date);
+
+        $data["announcement"] = $announcement;//Announcement::findOrFail($id);
         $data["sede"] = Sede::where('city',$sede);
-        return view('front.success',$data);
+
+        if($limit_date > date('Y-m-d H:i:s'))
+            return view('front.success',$data);
+        else
+            return abort('404');
     }
 
     public function announcementStore($sede, Request $request){

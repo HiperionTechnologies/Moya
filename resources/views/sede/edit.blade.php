@@ -2,6 +2,7 @@
 @section('content')
 
 <h2>Editar Sede - {{$sede->city}} </h2>
+<h2> {{$date}} </h2>
 <div>
 	{!!Form::model($sede,['route'=>['sede.update',$sede->id],'method'=>'PATCH','id'=>'sede-form'])!!}
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="tel">

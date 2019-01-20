@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-
 <h2> Sedes 
 	<a href="sede/create" class="btn btn-primary">Nuevo Sede</a>
 </h2>
+
 <div class="row">
 	<div class="col-lg-12 table-responsive">
 		<table class="table table-striped table-hover">
