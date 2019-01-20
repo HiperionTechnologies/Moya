@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         {!!Form::open(['route'=>'sede.redirect','method'=>'POST'])!!}
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="tel">
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
 				{!!Form::select('sede',$sedes,null,['class'=>'form-control','placeholder'=>'Sedes'])!!}
 			</div>
