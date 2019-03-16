@@ -50,28 +50,28 @@ return [
 
         'announcement' => [
             'driver' => 'local',
-            'root' => public_path().'/announcements',
+            'root' => public_path().'/images/announcements',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'event' => [
             'driver' => 'local',
-            'root' => public_path().'/events',
+            'root' => public_path().'/images/events',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'edition' => [
             'driver' => 'local',
-            'root' => public_path().'/editions',
+            'root' => public_path().'/images/editions',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         'statistic' => [
             'driver' => 'local',
-            'root' => public_path().'/statistics',
+            'root' => public_path().'/images/statistics',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

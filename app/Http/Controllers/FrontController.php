@@ -37,12 +37,12 @@ class FrontController extends Controller
         $data["sedes"] = Sede::all();
         $data["banner"] = Image::where('name','banner')->first();
         $data["statistics"] = Statistic::first();
-        $data["path"] = '/images/';
+        $data["path"] = 'images/';
     	return view('front.moya',$data);
     }
 
     public function events($sede){
-        $data["path"] = '/events/';
+        $data["path"] = '/images/events/';
         $data["sede"] = Sede::where('city',request()->segment(1))->first();
         $data["event"] = Event::join('ubications as u','events.idUbication','u.id')
                         ->latest('events.created_at')->first();
@@ -59,7 +59,7 @@ class FrontController extends Controller
     public function comunity($sede){
         $data["sede"] = Sede::where('city',$sede);
         $data["announcements"] = Announcement::all();
-        $data["path"] = '/announcements/';
+        $data["path"] = '/images/announcements/';
         return view('front.comunity',$data);
     }
 
@@ -91,7 +91,7 @@ class FrontController extends Controller
     public function announcementStore($sede, Request $request){
         //return request();
         $idSede = Sede::where('city',$sede)->first();
-        $path = 'announcements/';//Storage::disk('announcement')->getDriver()->getAdapter()->getPathPrefix();
+        $path = 'images/announcements/';//Storage::disk('announcement')->getDriver()->getAdapter()->getPathPrefix();
         $image = I::make(request()->image);
         $name = request()->first_name.$this->random_string().'.jpg';
         if($image->width() > 640){
@@ -102,7 +102,7 @@ class FrontController extends Controller
         else if($image->height() > 640){
             $image->resize(null, 640, function ($constraint) {
                 $constraint->aspectRatio();
-            });   
+            });
         }
         $image->save($path.$name, 70);
 
@@ -122,39 +122,45 @@ class FrontController extends Controller
             'idCategory' => request()->idCategory
         ]);
 
-        SocialNetwork::create([
-            'link' => request()->social,
-            'idAnnouncement' => $announcement->id,
-        ]);
-
-        for($i = 2; $i<5; $i++){
-            $num = (integer)$i;
-            if(!empty($request['social'.$num])){
-                SocialNetwork::create([
-                    'link' => $request['social'.$num],
-                    'idAnnouncement' => $announcement->id,
-                ]);
-            }
+        if(request()->facebook){
+            SocialNetwork::create([
+                'link' => request()->facebook,
+                'idAnnouncement' => $announcement->id,
+            ]);
+        }
+        if(request()->instagram){
+            SocialNetwork::create([
+                'link' => request()->instagram,
+                'idAnnouncement' => $announcement->id,
+            ]);
+        }
+        if(request()->twitter){
+            SocialNetwork::create([
+                'link' => request()->twitter,
+                'idAnnouncement' => $announcement->id,
+            ]);
         }
 
-        foreach(request()->photos as $photo){
-            $image = I::make($photo);
-            $name_photo = request()->first_name.$this->random_string().'.jpg';
-            if($image->width() > 1024){
-                $image->resize(1024, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+        if(request()->photos){
+            foreach(request()->photos as $photo){
+                $image = I::make($photo);
+                $name_photo = request()->first_name.$this->random_string().'.jpg';
+                if($image->width() > 1024){
+                    $image->resize(1024, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                }
+                else if($image->height() > 1024){
+                    $image->resize(null, 1024, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                }
+                $image->save($path.$name_photo, 70);
+                $photo = Photo::create([
+                    'route' => $name_photo,
+                    'idAnnouncement' => $announcement->id
+                ]);
             }
-            else if($image->height() > 1024){
-                $image->resize(null, 1024, function ($constraint) {
-                    $constraint->aspectRatio();
-                });   
-            }
-            $image->save($path.$name_photo, 70);
-            $photo = Photo::create([
-                'route' => $name_photo,
-                'idAnnouncement' => $announcement->id
-            ]);
         }
 
         if(request()->name_interested != null){
@@ -164,19 +170,23 @@ class FrontController extends Controller
                 'phone' => request()->phone_interested
             ]);
 
-            SocialNetworkInterested::create([
-                'link' => request()->social_interested,
-                'idInterested' => $interested->id,
-            ]);
-
-            for($i = 2; $i<5; $i++){
-                $num = (integer)$i;
-                if(!empty($request['social'.$num])){
-                    SocialNetworkInterested::create([
-                        'link' => $request['social_interested'.$num],
-                        'idInterested' => $interested->id,
-                    ]);
-                }
+            if(request()->facebook){
+                SocialNetworkInterested::create([
+                    'link' => request()->facebook_interested,
+                    'idInterested' => $interested->id,
+                ]);
+            }
+            if(request()->instagram){
+                SocialNetworkInterested::create([
+                    'link' => request()->instagram_interested,
+                    'idInterested' => $interested->id,
+                ]);
+            }
+            if(request()->twitter){
+                SocialNetworkInterested::create([
+                    'link' => request()->twitter_interested,
+                    'idInterested' => $interested->id,
+                ]);
             }
         }
 
@@ -190,7 +200,7 @@ class FrontController extends Controller
         $keys = array_merge(range('a','z'),range(0,9));
         for($i=0; $i<10; $i++){
             $key .= $keys[array_rand($keys)];
-        }    
+        }
         return $key;
     }
 }

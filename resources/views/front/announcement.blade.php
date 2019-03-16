@@ -30,13 +30,21 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social">
 			<div class="form-group" id="dynamic">
-				{!!Form::label('social','Redes Sociales',['class'=>'control-label'])!!}
-				{!!Form::text('social',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+				{!!Form::label('social','Facebook',['class'=>'control-label'])!!}
+				{!!Form::text('facebook',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
 			</div>
 		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<input type="button" id="add" value="Agregar Red Social" class="btn btn-primary">
-			<input type="button" id="del" value="Eliminar Ultima Red Social" class="btn btn-danger">
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social">
+			<div class="form-group" id="dynamic">
+				{!!Form::label('social','Instagram',['class'=>'control-label'])!!}
+				{!!Form::text('instagram',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+			</div>
+		</div>
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social">
+			<div class="form-group" id="dynamic">
+				{!!Form::label('social','Twitter',['class'=>'control-label'])!!}
+				{!!Form::text('twitter',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
@@ -144,13 +152,21 @@
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social_int">
 			<div class="form-group" id="dynamic_int">
-				{!!Form::label('social_interested','Redes Sociales',['class'=>'control-label'])!!}
-				{!!Form::text('social_interested',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+				{!!Form::label('social_interested','Facebook',['class'=>'control-label'])!!}
+				{!!Form::text('facebook_interested',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
 			</div>
 		</div>
-		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-			<input type="button" id="add_int" value="Agregar Red Social" class="btn btn-primary">
-			<input type="button" id="del_int" value="Eliminar Ultima Red Social" class="btn btn-danger">
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social_int">
+			<div class="form-group" id="dynamic_int">
+				{!!Form::label('social_interested','Instagram',['class'=>'control-label'])!!}
+				{!!Form::text('instagram_interested',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+			</div>
+		</div>
+		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12" id="social_int">
+			<div class="form-group" id="dynamic_int">
+				{!!Form::label('social_interested','Twitter',['class'=>'control-label'])!!}
+				{!!Form::text('twitter_interested',null,['class'=>'form-control','placeholder'=>'Link de su Red Social'])!!}
+			</div>
 		</div>
 		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
 			<div class="form-group">
@@ -161,88 +177,13 @@
 </div>
 
 <script>
-	$(document).ready(function(){
-		$('#del').attr('disabled','disabled');
-		$('#add').click(function(){
-			var padre = document.getElementById("social");
-			var totalSocial = padre.childElementCount + 1;
-
-			var div = document.createElement('div');
-			div.setAttribute("class","form-group");
-			div.setAttribute("id","dynamic"+totalSocial);
-			padre.appendChild(div);
-
-			var input = document.createElement('input');
-			input.setAttribute("type",'text');
-			input.setAttribute("id","social"+totalSocial);
-			input.setAttribute("name","social"+totalSocial);
-			input.setAttribute("class","form-control");
-			input.setAttribute("placeholder","Link de su Red Social");
-			div.appendChild(input);
-
-			$('#del').attr('disabled',false);
-			if(totalSocial == 5){
-				$('#add').attr('disabled','disabled');
-			}
-			totalSocial+=1;
-		});
-
-		$('#del').click(function(){
-			var padre = document.getElementById("social");
-			var totalSocial = padre.childElementCount;
-			var ultimo = document.getElementById("dynamic"+totalSocial);
-			padre.removeChild(ultimo);
-			$('#add').attr('disabled',false);
-
-			if(totalSocial -1 == 1){
-				$('#del').attr('disabled','disabled');
-			}
-		});
-
-		$('#del_int').attr('disabled','disabled');
-		$('#add_int').click(function(){
-			var padre = document.getElementById("social_int");
-			var totalSocial = padre.childElementCount + 1;
-
-			var div = document.createElement('div');
-			div.setAttribute("class","form-group");
-			div.setAttribute("id","dynamic_int"+totalSocial);
-			padre.appendChild(div);
-
-			var input = document.createElement('input');
-			input.setAttribute("type",'text');
-			input.setAttribute("id","social_interested"+totalSocial);
-			input.setAttribute("name","social_interested"+totalSocial);
-			input.setAttribute("class","form-control");
-			input.setAttribute("placeholder","Link de su Red Social");
-			div.appendChild(input);
-
-			$('#del_int').attr('disabled',false);
-			if(totalSocial == 5){
-				$('#add_int').attr('disabled','disabled');
-			}
-			totalSocial+=1;
-		});
-
-		$('#del_int').click(function(){
-			var padre = document.getElementById("social_int");
-			var totalSocial = padre.childElementCount;
-			var ultimo = document.getElementById("dynamic_int"+totalSocial);
-			padre.removeChild(ultimo);
-			$('#add_int').attr('disabled',false);
-
-			if(totalSocial -1 == 1){
-				$('#del_int').attr('disabled','disabled');
-			}
-		});
-	});
 
 	function validateImages(){
 		var photos = document.getElementById("photos");
 		var images = photos.files;
 		var extensions = /(.jpg|.jpeg|.png)$/i;
 		if(images.length < 4){
-			for(var i=0;i<images.length;i++){	
+			for(var i=0;i<images.length;i++){
 			    if(!extensions.exec(images[i].name)){
 			        alert('Uno o mas archivos seleccionados no son imagenes');
 			        photos.value = '';

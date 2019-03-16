@@ -98,7 +98,7 @@ class AnnouncementController extends Controller
 
     public function show($id){
         $data["announcement"] = Announcement::findOrFail($id);
-        $data["path"] = '/announcements/';
+        $data["path"] = '/images/announcements/';
         return view('announcement.show',$data);
     }
 
@@ -113,12 +113,12 @@ class AnnouncementController extends Controller
     public function destroy($id){
         $announcement = Announcement::findOrFail($id);
         $photos = $announcement->photos;
-        if(is_file(public_path().'/announcements/'.$image->route)){
-            unlink(public_path().'/announcements/'.$announcement->image);
+        if(is_file(public_path().'/images/announcements/'.$image->route)){
+            unlink(public_path().'/images/announcements/'.$announcement->image);
         }
         foreach($photos as $photo){
-            if(is_file(public_path().'/announcements/'.$image->route)){
-                unlink(public_path().'/announcements/'.$photo->route);
+            if(is_file(public_path().'/images/announcements/'.$image->route)){
+                unlink(public_path().'/images/announcements/'.$photo->route);
             }
         }
         Announcement::destroy($id);
@@ -128,7 +128,7 @@ class AnnouncementController extends Controller
     public function getPhotos($id){      
         $announcement = Announcement::findOrFail($id);
         $photos = $announcement->photos;
-        $path = '/announcements/';
+        $path = '/images/announcements/';
         return view('announcement.photos',["announcement"=>$announcement, "photos"=>$photos,"path"=>$path]);
     }
 
