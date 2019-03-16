@@ -1,0 +1,67 @@
+.m-lightbox-menu{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color:rgba(231,232,235,1);
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    z-index: 5;
+}
+.m-lightbox-menu.open{
+    transform: translateX(0);
+}
+.m-lightbox-menu_header{
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.m-lightbox-menu_header_close{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+.m-lightbox-menu_header_close span{
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    background-color: #222;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    transform-origin: center center;
+}
+.m-lightbox-menu_header_close span:first-child{
+    transform: rotate(-45deg);
+}
+.m-lightbox-menu_header_close span:last-child{
+    transform: rotate(45deg);
+}
+.m-lightbox-menu_body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.m-lightbox-menu_body nav{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.m-lightbox-menu_link{
+    display: block;
+    font-family: MontserratBold;
+    font-size: 32px;
+    text-decoration: none;
+    color: #222;
+    text-align: center;
+    margin-bottom: 15px;
+}

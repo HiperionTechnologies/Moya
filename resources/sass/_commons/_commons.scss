@@ -1,0 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+main{
+    position: relative;
+}
+.m-title-block{
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    padding-left: 40px;
+}
+.m-title-block:before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 1px;
+    background-color: #fff;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+@media (min-width: 768px){
+    main{
+        border-left: 50px solid #ffffff;
+        border-right: 50px solid #ffffff;
+    }
+}
+@media (min-width: 1024px){
+    main{
+        border-left: 100px solid #ffffff;
+        border-right: 100px solid #ffffff;
+    }
+}

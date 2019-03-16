@@ -1,0 +1,119 @@
+.m-cover-event{
+    display: none;
+}
+
+/* weare info */
+.m-weare{
+    position: relative;
+    padding: 50px 0px;
+}
+.m-weare-info{
+    padding: 0px 15px;
+}
+.m-weare-info .m-title-block{
+    margin-bottom: 25px;
+}
+.m-weare-info .m-title-block::before{
+    background-color: #000;
+}
+.m-weare-info p{
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 2px;
+}
+.m-weare-info strong{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* statistics */
+
+.m-statistics{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0px;
+    width: 100%;
+}
+.m-statistics-box{
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #000;
+    color: #ffffff;
+}
+.m-statistics-box:nth-child(1){
+    background-color: transparent;
+    color: #000;
+    align-items: flex-start;
+    padding: 0px 15px;
+}
+.m-statistics-box:nth-child(3),
+.m-statistics-box:nth-child(5){
+    background-color: #b8bba5;
+    color: #000;
+}
+.m-statistics-number{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+}
+.m-statistics-subtitle{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.m-statistics .m-title-block:before{
+    background-color: #000;
+}
+.m-statistics .places, .brands, .sales{
+    // background-image: url(../images/llmercato.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media (min-width: 768px){
+    /* weare info */
+    .m-weare-info{
+        padding: 0px 50px;
+    }
+    .m-weare-info p{
+        font-size: 18px;
+        line-height: 34px;
+        padding-left: 40px;
+    }
+    /* statistics */
+    .m-statistics{
+        padding: 50px 0px;
+    }
+    .m-statistics-box{
+        width: 50%;
+    }
+    .m-statistics-box:nth-child(1){
+        align-items: center;
+        padding: 0;
+    }
+}
+@media (min-width: 1024px){
+    /* weare info */
+    .m-weare{
+        padding: 100px 0px;
+    }
+    .m-weare-info{
+        margin: 0px 100px;
+    }
+    /* statistics */
+    .m-statistics{
+        padding: 100px 0px;
+    }
+    .m-statistics-box{
+        width: 33%;
+        height: 350px;
+    }
+    .m-statistics-number{
+        font-size: 70px;
+    }
+}

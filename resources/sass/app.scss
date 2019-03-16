@@ -1,14 +1,20 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Commons
+@import '_commons/_commons';
+@import '_commons/_header';
+@import '_commons/_footer';
+@import '_commons/_social';
+@import '_commons/_lightbox';
+
+//Components
+@import '_views/home/_components/cover';
+
+//Views
+@import '_views/home/home';
+

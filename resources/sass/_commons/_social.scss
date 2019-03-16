@@ -1,0 +1,42 @@
+.m-social{
+    display: none;
+    position: fixed;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 25px;
+}
+.m-social li{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    list-style: none;
+}
+.m-social li:nth-child(1),
+.m-social li:nth-child(2){
+    margin-bottom: 30px;
+}
+.m-social li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #222;
+}
+.m-social li a i{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+@media (min-width: 768px){
+    .m-social{
+        display: block;
+        left: 0px;
+    }
+}
+@media (min-width: 1024px){
+    .m-social{
+        left: 25px;
+    }
+}

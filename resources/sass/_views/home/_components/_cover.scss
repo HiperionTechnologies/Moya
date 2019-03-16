@@ -1,0 +1,132 @@
+.m-cover{
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.m-cover .m-cover-bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-size: cover;
+    /*
+    -webkit-box-shadow: -10px 10px 20px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -10px 10px 20px -10px rgba(0,0,0,0.75);
+    box-shadow: -10px 10px 20px -10px rgba(0,0,0,0.75);
+    */
+}
+
+.m-cover .m-cover-info{
+    position: absolute;
+    bottom: 100px;
+    color: #ffffff;
+    padding: 0px 15px;
+    width: calc(100% - 30px);
+}
+.m-cover .m-cover-info p{
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    padding-left: 40px;
+}
+.m-cover .m-cover-link{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    width: 250px;
+    height: 50px;
+    background-color:#000;
+    margin-top: 20px;
+    margin-left: 40px;
+    text-decoration: none;
+}
+.m-cover  .m-cover-link-label{
+    position: relative;
+    font-family: RobotoLight;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.m-cover .m-cover-link-line{
+    position: relative;
+    width: 30px;
+    height: 1px;
+    background: #ffffff;
+    margin-left: 5px;
+}
+.m-cover-scroll{
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    transform: rotate(90deg);
+    right: -125px;
+    width: 150px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.m-cover-scroll-label{
+    position: relative;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+.m-cover-scroll-line{
+    width: 30px;
+    height: 1px;
+    background-color: #000;
+    margin-left: 5px;
+}
+.m-cover-event{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 30px;
+    font-family: MontserratBold;
+    text-align: center;
+}
+
+
+@media (min-width: 768px){
+    .m-cover{
+        height: 600px;
+    }
+    .m-cover .m-cover-info{
+        left: 50px;
+        width: 400px;
+        max-width: 400px;
+    }
+    .m-cover-scroll{
+        display: flex;
+        right: -100px;
+    }
+    .m-cover-event{
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 1024px){
+    .m-cover{
+        margin-bottom: 100px;
+    }
+    .m-cover .m-cover-info{
+        left: 100px;
+        width: 500px;
+        max-width: 500px;
+    }
+    .m-cover-scroll{
+        right: -125px;
+    }
+    .m-cover-event{
+        text-align: left;
+        font-size: 50px;
+    }
+}

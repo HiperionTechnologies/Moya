@@ -5,28 +5,15 @@
     <meta http-equiv="x-ua-compatible" content="ie-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, srink-to-fit=no" >
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'MOYA') }}</title>
-    
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> 
-    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
-    <!-- Styles -->
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-    @switch(request()->segment(1))
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+
+    <!-- @switch(request()->segment(1))
         @case('eventos')
             <link rel="stylesheet" href="Estilos Eventos">
             @break
@@ -37,30 +24,75 @@
             <link rel="stylesheet" href="Estilos Comunidad">
             @break
         @default
-            <link rel="stylesheet" href="Estilos Moya - pagina principal">
-    @endswitch    
+            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @endswitch -->
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{route('moya',[request()->segment(1)])}}">Moya</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('eventos',[request()->segment(1)])}}">Eventos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('convocatoria',[request()->segment(1)])}}">Convocatorias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('comunidad',[request()->segment(1)])}}">Comunidad</a></li>
-                </ul>
+    <header id="m-header">
+        <div class="m-header-logo">
+            <a href="{{route('moya',[request()->segment(1)])}}" title='MOYA'>
+            <img src="{{ asset('images/logo_moya.svg') }}" alt="Logotipo Moya">
+            </a>
+        </div>
+        <div class="m-header-nav">
+            <nav>
+                <a href="{{route('eventos',[request()->segment(1)])}}" class="m-header-nav-link">Eventos</a>
+                <a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-header-nav-link">Convocatoria</a>
+                <a href="{{route('comunidad',[request()->segment(1)])}}" class="m-header-nav-link">Comunidad</a>
+            </nav>
+        </div>
+        <div id="js-burger" class="m-header-burger">
+            <span class="m-header-burger-line"></span>
+            <span class="m-header-burger-line"></span>
+            <span class="m-header-burger-line"></span>
+        </div>
+    </header>
+    <main>
+        @yield('content')
+    </main>
+    <footer id="m-footer">
+        <div class="m-footer-moya">
+            <div class="m-footer-moya-text">
+                <img src="{{ asset('images/logo_moya_white.svg') }}" alt="Logotipo Moya">
             </div>
-        </nav>
-        <div class="container mt-4">
-            @yield('content')
-        </main>
+        </div>
+        <div class="m-footer-social">
+            <a href='#' class="m-footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href='#' class="m-footer-social-link"><i class="fab fa-instagram"></i></a>
+            <a href='#' class="m-footer-social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="m-footer-legals">
+            <a href='#' class="m-footer-terms">Términos y condiciones</a>
+            <a href='#' class="m-footer-privacy">Aviso de privacidad</a>
+        </div>
+        <div class="m-footer-copy">
+            <p>&copy; 2018 MOYA - Mercado Orgánico Y de Artesanías</p>
+        </div>
+    </footer>
+    <div id="m-social" class="m-social">
+        <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
     </div>
+    <div id="m-lightbox" class="m-lightbox-menu">
+        <div class="m-lightbox-menu_header">
+            <div id="js-menu-close" class="m-lightbox-menu_header_close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="m-lightbox-menu_body">
+            <nav>
+                <a href="/eventos" class="m-lightbox-menu_link">Eventos</a>
+                <a href="/comunidad" class="m-lightbox-menu_link">Comunidad</a>
+                <a href="/convocatoria" class="m-lightbox-menu_link">Convocatoria</a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 </body>
 </html>
