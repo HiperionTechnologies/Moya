@@ -6,11 +6,10 @@
 	<div class="m-cover-info">
 		<h1 class="m-title-block">{{$banner->title}}</h1>
 		<p>{{$banner->description}}</p>
-		<a href="#" class="m-cover-link">
+		<a href="#" class="m-cover-link m-btn-black">
 			<div class="m-cover-link-label">
 				Explora Edición
 			</div>
-			<div class='m-cover-link-line'></div>
 		</a>
 	</div>
 	<div class="m-cover-scroll">

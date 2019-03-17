@@ -21,16 +21,18 @@
 
 .m-cover .m-cover-info{
     position: absolute;
-    bottom: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: #ffffff;
-    padding: 0px 15px;
-    width: calc(100% - 30px);
+    text-align: center;
 }
 .m-cover .m-cover-info p{
-    font-size: 24px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 0.5px;
     line-height: 30px;
-    padding-left: 40px;
+    font-weight: 300;
 }
 .m-cover .m-cover-link{
     position: relative;
@@ -39,25 +41,16 @@
     align-items: center;
     color: #ffffff;
     width: 250px;
-    height: 50px;
-    background-color:#000;
     margin-top: 20px;
-    margin-left: 40px;
     text-decoration: none;
 }
 .m-cover  .m-cover-link-label{
     position: relative;
-    font-family: RobotoLight;
+    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-.m-cover .m-cover-link-line{
-    position: relative;
-    width: 30px;
-    height: 1px;
-    background: #ffffff;
-    margin-left: 5px;
+    font-weight: 500;
 }
 .m-cover-scroll{
     display: none;
@@ -100,9 +93,12 @@
         height: 600px;
     }
     .m-cover .m-cover-info{
-        left: 50px;
-        width: 400px;
-        max-width: 400px;
+        width: 500px;
+        max-width: 500px;
+    }
+    .m-cover-link{
+        margin-left: auto;
+        margin-right: auto;
     }
     .m-cover-scroll{
         display: flex;
@@ -118,9 +114,14 @@
         margin-bottom: 100px;
     }
     .m-cover .m-cover-info{
-        left: 100px;
-        width: 500px;
-        max-width: 500px;
+        width: 800px;
+        max-width: 800px;
+        h1{
+            font-size: 32px;
+        }
+    }
+    .m-cover .m-cover-info p{
+        font-size: 24px;
     }
     .m-cover-scroll{
         right: -125px;
