@@ -1,16 +1,5 @@
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
 // Commons
-@import '_commons/_commons';
-@import '_commons/_header';
-@import '_commons/_footer';
-@import '_commons/_social';
-@import '_commons/_lightbox';
+@import '_commons';
 
 //Components
 @import '_views/home/_components/cover';
