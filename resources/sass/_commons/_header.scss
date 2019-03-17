@@ -1,6 +1,6 @@
 header{
     position: relative;
-    height: 100px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@ header{
 
 header .m-header-logo a{
     display: block;
-    width: 110px;
+    width: 80px;
     text-decoration: none;
 }
 header .m-header-logo a img{
@@ -27,8 +27,8 @@ header .m-header-burger{
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 20px;
     cursor: pointer;
 }
 header .m-header-burger span{
@@ -50,6 +50,12 @@ header .m-header-nav nav .m-header-nav-link{
     font-weight: 700;
     text-decoration: none;
     padding: 0px 20px;
+    &:hover{
+        color: $verde_moya;
+    }
+    &:focus{
+        outline: none;
+    }
 }
 header .m-header-nav nav .m-header-nav-link:first-child{
     padding-left: 0px;
@@ -76,6 +82,7 @@ header .m-header-nav nav .m-header-nav-link:last-child{
         display: none;
     }
     header{
+        height: 100px;
         border-left: 100px solid #ffffff;
         border-right: 100px solid #ffffff;
     }

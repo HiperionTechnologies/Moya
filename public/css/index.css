@@ -11491,7 +11491,7 @@ main {
 
 header {
   position: relative;
-  height: 100px;
+  height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11506,7 +11506,7 @@ header {
 
 header .m-header-logo a {
   display: block;
-  width: 110px;
+  width: 80px;
   text-decoration: none;
 }
 
@@ -11534,8 +11534,8 @@ header .m-header-burger {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 20px;
   cursor: pointer;
 }
 
@@ -11559,6 +11559,14 @@ header .m-header-nav nav .m-header-nav-link {
   font-weight: 700;
   text-decoration: none;
   padding: 0px 20px;
+}
+
+header .m-header-nav nav .m-header-nav-link:hover {
+  color: #91A46A;
+}
+
+header .m-header-nav nav .m-header-nav-link:focus {
+  outline: none;
 }
 
 header .m-header-nav nav .m-header-nav-link:first-child {
@@ -11590,6 +11598,7 @@ header .m-header-nav nav .m-header-nav-link:last-child {
   }
 
   header {
+    height: 100px;
     border-left: 100px solid #ffffff;
     border-right: 100px solid #ffffff;
   }
@@ -11750,7 +11759,7 @@ footer {
   width: 100vw;
   height: 100vh;
   top: 0;
-  background-color: #e7e8eb;
+  background-color: #fff;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   -webkit-transition: -webkit-transform .3s ease;
@@ -11767,7 +11776,7 @@ footer {
 
 .m-lightbox-menu_header {
   position: absolute;
-  height: 100px;
+  height: 70px;
   width: 100%;
   left: 0;
   top: 0;
@@ -11824,12 +11833,28 @@ footer {
 
 .m-lightbox-menu_link {
   display: block;
-  font-family: MontserratBold;
-  font-size: 32px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
   text-decoration: none;
   color: #222;
   text-align: center;
   margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.m-lightbox-menu_link:hover {
+  color: #91A46A;
+  text-decoration: none;
+}
+
+.m-lightbox-menu_link:focus {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .m-lightbox-menu_header_close {
+    right: 50px;
+  }
 }
 
 main {
