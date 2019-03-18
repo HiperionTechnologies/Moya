@@ -11503,11 +11503,14 @@ main {
   color: #ffffff;
   font-weight: 500;
   min-width: 200px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .m-btn-black:hover {
   background-color: #91A46A;
   color: #ffffff;
+  text-decoration: none;
 }
 
 .m-btn-black:focus {
@@ -11694,6 +11697,10 @@ footer {
   font-size: 24px;
 }
 
+.m-footer-social-link:hover {
+  color: #91A46A;
+}
+
 .m-footer-legals {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11715,6 +11722,10 @@ footer {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
+}
+
+.m-footer-legals a:hover {
+  color: #91A46A;
 }
 
 .m-footer-copy {

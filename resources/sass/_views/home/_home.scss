@@ -75,6 +75,48 @@
     background-color: #000;
 }
 
+/* banner */
+.m-banner{
+    position: relative;
+    height: 350px;
+}
+.m-banner-bg-shape,
+.m-banner-bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.m-banner-bg{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.m-banner-bg-shape{
+    background-color: rgba(0,0,0,0.3);
+}
+.m-banner-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.m-banner-content a{
+    max-width: 300px;
+}
+.m-banner-content p{
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+}
+
 
 @media (min-width: 768px){
     /* weare info */
@@ -97,6 +139,12 @@
         align-items: center;
         padding: 0;
     }
+    .m-banner{
+        margin-bottom: 50px;
+    }
+    .m-banner-content p{
+        max-width: 500px;
+    }
 }
 @media (min-width: 1024px){
     /* weare info */
@@ -114,7 +162,8 @@
         width: 20%;
         height: 300px;
     }
-    .m-statistics-number{
-        // font-size: 70px;
+    .m-banner-content p{
+        font-size: 24px;
+        max-width: 800px;
     }
 }

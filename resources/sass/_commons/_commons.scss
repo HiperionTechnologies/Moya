@@ -55,9 +55,12 @@ main{
     color: #ffffff;
     font-weight: 500;
     min-width: 200px;
+    text-transform: uppercase;
+    text-align: center;
     &:hover{
         background-color: #91A46A;
         color: #ffffff;
+        text-decoration: none;
     }
     &:focus{
         outline: none;

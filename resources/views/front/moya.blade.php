@@ -64,5 +64,13 @@
 		</div>
 	</div>
 </div>
+<div class="m-banner">
+	<div class="m-banner-bg" style="background-image:url({{ asset('images/bg_login.jpg') }})"></div>
+	<div class="m-banner-bg-shape"></div>
+	<div class="m-banner-content">
+		<p class="m-banner-text">Forma parte de nuestra comunidad como expositor</p>
+		<a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-btn-black">Registrate</a>
+	</div>
+</div>
 
 @endsection

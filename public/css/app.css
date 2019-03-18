@@ -11503,11 +11503,14 @@ main {
   color: #ffffff;
   font-weight: 500;
   min-width: 200px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .m-btn-black:hover {
   background-color: #91A46A;
   color: #ffffff;
+  text-decoration: none;
 }
 
 .m-btn-black:focus {
@@ -11694,6 +11697,10 @@ footer {
   font-size: 24px;
 }
 
+.m-footer-social-link:hover {
+  color: #91A46A;
+}
+
 .m-footer-legals {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11715,6 +11722,10 @@ footer {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 10px;
+}
+
+.m-footer-legals a:hover {
+  color: #91A46A;
 }
 
 .m-footer-copy {
@@ -12170,6 +12181,64 @@ footer {
   background-color: #000;
 }
 
+/* banner */
+
+.m-banner {
+  position: relative;
+  height: 350px;
+}
+
+.m-banner-bg-shape,
+.m-banner-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.m-banner-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.m-banner-bg-shape {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.m-banner-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.m-banner-content a {
+  max-width: 300px;
+}
+
+.m-banner-content p {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  line-height: 30px;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   /* weare info */
 
@@ -12199,6 +12268,14 @@ footer {
             align-items: center;
     padding: 0;
   }
+
+  .m-banner {
+    margin-bottom: 50px;
+  }
+
+  .m-banner-content p {
+    max-width: 500px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -12221,6 +12298,11 @@ footer {
   .m-statistics-box {
     width: 20%;
     height: 300px;
+  }
+
+  .m-banner-content p {
+    font-size: 24px;
+    max-width: 800px;
   }
 }
 
