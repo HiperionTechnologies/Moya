@@ -48,7 +48,7 @@
         </div>
         <div class="m-header-nav">
             <nav>
-                <a href="{{route('eventos',[request()->segment(1)])}}" class="m-header-nav-link">Eventos</a>
+                <a href="{{route('eventos',[request()->segment(1)])}}" class="m-header-nav-link">Evento</a>
                 <a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-header-nav-link">Convocatoria</a>
                 <a href="{{route('comunidad',[request()->segment(1)])}}" class="m-header-nav-link">Comunidad</a>
             </nav>
