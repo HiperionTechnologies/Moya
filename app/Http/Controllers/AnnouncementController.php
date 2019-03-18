@@ -32,7 +32,7 @@ class AnnouncementController extends Controller
     }
 
     public function store(Request $request){
-        
+
     	$announcement = Announcement::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
@@ -125,7 +125,7 @@ class AnnouncementController extends Controller
         return Redirect::to('announcement');
     }
 
-    public function getPhotos($id){      
+    public function getPhotos($id){
         $announcement = Announcement::findOrFail($id);
         $photos = $announcement->photos;
         $path = '/images/announcements/';

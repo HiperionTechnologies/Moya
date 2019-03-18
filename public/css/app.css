@@ -12326,11 +12326,24 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 100px;
+  margin-top: 50px;
+  padding: 0px 15px;
+}
+
+.m-exhibitors-wearemoya {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.m-exhibitors-wearemoya img {
+  width: 250px;
 }
 
 .m-exhibitors-box {
   position: relative;
-  width: 31%;
+  width: 100%;
   height: 350px;
   overflow: hidden;
   -webkit-box-shadow: 0 10px 20px 0 rgba(50, 50, 50, 0.1);
@@ -12339,21 +12352,28 @@ footer {
 }
 
 .m-exhibitors-box-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 250px;
+  height: 270px;
   background-size: cover;
   background-position: center;
 }
 
 .m-exhibitors-box-content {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100px;
-  bottom: 0px;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #fff;
+  padding: 0px 15px;
 }
 
 .m-exhibitors-title {
@@ -12368,13 +12388,53 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0px 15px;
+  width: 70%;
 }
 
 .m-exhibitors-social {
-  padding: 0px 15px;
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.m-exhibitors-social-link {
+  display: block;
+  padding: 10px;
   color: #000;
   font-size: 16px;
+  margin-left: 10px;
+}
+
+.m-exhibitors-social-link:hover {
+  color: #91A46A;
+}
+
+.m-exhibitors-social-link:first-child {
+  margin-left: 0px;
+}
+
+@media (min-width: 768px) {
+  .m-exhibitors {
+    padding: 0;
+  }
+
+  .m-exhibitors-box {
+    width: 45%;
+  }
+
+  .m-exhibitors-wearemoya img {
+    width: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .m-exhibitors-box {
+    width: 30%;
+  }
 }
 
 .m-announcement {
