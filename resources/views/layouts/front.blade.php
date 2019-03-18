@@ -83,9 +83,9 @@
     </footer>
     <div id="m-social" class="m-social">
         <ul>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
     <div id="m-lightbox" class="m-lightbox-menu">
@@ -97,9 +97,9 @@
         </div>
         <div class="m-lightbox-menu_body">
             <nav>
-                <a href="/eventos" class="m-lightbox-menu_link">Eventos</a>
-                <a href="/comunidad" class="m-lightbox-menu_link">Comunidad</a>
-                <a href="/convocatoria" class="m-lightbox-menu_link">Convocatoria</a>
+                <a href="{{route('eventos',[request()->segment(1)])}}" class="m-lightbox-menu_link">Eventos</a>
+                <a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-lightbox-menu_link">Comunidad</a>
+                <a href="{{route('comunidad',[request()->segment(1)])}}" class="m-lightbox-menu_link">Convocatoria</a>
             </nav>
         </div>
     </div>

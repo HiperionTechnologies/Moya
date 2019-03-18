@@ -11767,6 +11767,13 @@ footer {
           transform: translateY(-50%);
   top: 50%;
   left: 25px;
+  opacity: 1;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.m-social.m-hidden {
+  opacity: 0;
 }
 
 .m-social li {
@@ -11785,7 +11792,11 @@ footer {
   display: block;
   width: 100%;
   height: 100%;
-  color: #222;
+  color: #000000;
+}
+
+.m-social li a:hover {
+  color: #91A46A;
 }
 
 .m-social li a i {
