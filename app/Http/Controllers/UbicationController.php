@@ -69,6 +69,7 @@ class UbicationController extends Controller
     }*/
 
     public function destroy($id){
-        Ubication::destroy($id);    	
+        Ubication::destroy($id); 
+        return  Redirect::to('ubication');
     }
 }

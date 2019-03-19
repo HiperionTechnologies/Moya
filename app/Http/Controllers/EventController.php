@@ -34,7 +34,7 @@ class EventController extends Controller
     }
 
     public function store(EventFormRequest $request){
-        $path = 'events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+        $path = 'images/events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
         $image = Image::make(request()->image);
         $name = request()->name.$this->random_string().'.jpg';
         if($image->width() > 1500){
@@ -86,7 +86,7 @@ class EventController extends Controller
 
     public function show($id){
     	$data["event"] = Event::findOrFail($id);
-        $data["path"] = '/events/';
+        $data["path"] = '/images/events/';
     	return view('event.show',$data);
     }
 
@@ -101,8 +101,8 @@ class EventController extends Controller
         $event->name = request()->name;
         $event->description = request()->description;
         if(request()->image){
-            $path = 'events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
-            $img = Image::make(request()->image);
+            $path = 'images/events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+            $image = Image::make(request()->image);
             $name = $event->name.$this->random_string().'.jpg';
             if($image->width() > 1500){
                 $image->resize(1500, null, function ($constraint) {
@@ -114,11 +114,11 @@ class EventController extends Controller
                     $constraint->aspectRatio();
                 });   
             }
-            $img->save($path.$name, 70);
-            $img->destroy();
+            $image->save($path.$name, 70);
+            $image->destroy();
 
-            if(is_file(public_path().'/events/'.$image->route)){   
-                unlink(public_path().'/events/'.$event->image);
+            if(is_file(public_path().'/images/events/'.$event->image)){   
+                unlink(public_path().'/images/events/'.$event->image);
             }
             
             $event->image = $name;
@@ -131,8 +131,8 @@ class EventController extends Controller
 
     public function destroy($id){
         $event = Event::findOrFail($id);
-        if(is_file(public_path().'/events/'.$image->route)){
-            unlink(public_path().'/events/'.$event->image);
+        if(is_file(public_path().'/images/events/'.$event->image)){
+            unlink(public_path().'/images/events/'.$event->image);
         }
 
         if(count($event->gallery) > 0){
@@ -167,7 +167,7 @@ class EventController extends Controller
     public function getGallery($id){
     	$data["event"] = Event::findOrFail($id);
     	//$gallery = $event->gallery;
-    	$data["path"] = '/events/';
+    	$data["path"] = 'images/events/';
     	return view('event.gallery',$data); 
     }
 

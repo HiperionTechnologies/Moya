@@ -42,11 +42,20 @@ class FrontController extends Controller
     }
 
     public function events($sede){
+        $sede = Sede::where('city',request()->segment(1))->first();
         $data["path"] = '/images/events/';
-        $data["sede"] = Sede::where('city',request()->segment(1))->first();
-        $data["event"] = Event::join('ubications as u','events.idUbication','u.id')
-                        ->latest('events.created_at')->first();
+        $data["sede"] = $sede;
+        $data["event"] = /*DB::table('events as e')
+                        ->join('ubications as u','e.idUbication','u.id')
+                        ->select('e.*')
+                        ->latest('e.created_at')->first();*/
+        Event::latest('created_at')->first();
+        /*Event::join('ubications as u','events.idUbication','u.id')
+                        ->select('u.name as gg')
+                        ->latest('events.created_at')->first();*/
+        //return $data;
         return view('front.events',$data);
+
     }
 
     public function announcement($sede){

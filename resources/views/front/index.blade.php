@@ -33,7 +33,7 @@
                     {!!Form::open(['route'=>'sede.redirect','method'=>'POST'])!!}
                     <div class="col-xs-12">
                         <div class="form-group">
-                            {!!Form::select('sede',$sedes,null,['class'=>'form-control m-form-select','placeholder'=>'Sedes'])!!}
+                            {!!Form::select('sede',$sedes,null,['class'=>'form-control m-form-select'])!!}
                         </div>
                     </div>
                     <div class="col-xs-12 text-center">
