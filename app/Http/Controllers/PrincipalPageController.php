@@ -34,13 +34,13 @@ class PrincipalPageController extends Controller
             $path = 'images/';//Storage::disk('image')->getDriver()->getAdapter()->getPathPrefix();
             $img = I::make(request()->image);
             $name = $image->name.$this->random_string().'.jpg';
-            if($image->width() > 1500){
-                $image->resize(1500, null, function ($constraint) {
+            if($img->width() > 1500){
+                $img->resize(1500, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             }
-            else if($image->height() > 1024){
-                $image->resize(null, 1024, function ($constraint) {
+            else if($img->height() > 1024){
+                $img->resize(null, 1024, function ($constraint) {
                     $constraint->aspectRatio();
                 });   
             }

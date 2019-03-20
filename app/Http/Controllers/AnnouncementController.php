@@ -25,7 +25,7 @@ class AnnouncementController extends Controller
     	return view('announcement.index',["announcements"=>$announcements]);
     }
 
-    public function create(){
+    /*public function create(){
         $sedes = Sede::pluck('city','id');
         $categories = Category::pluck('name','id');
     	return view('announcement.create',["sedes"=>$sedes,"categories"=>$categories]);
@@ -94,7 +94,7 @@ class AnnouncementController extends Controller
         }
 
     	return Redirect::to('announcement');
-    }
+    }*/
 
     public function show($id){
         $data["announcement"] = Announcement::findOrFail($id);
@@ -113,11 +113,11 @@ class AnnouncementController extends Controller
     public function destroy($id){
         $announcement = Announcement::findOrFail($id);
         $photos = $announcement->photos;
-        if(is_file(public_path().'/images/announcements/'.$image->route)){
+        if(is_file(public_path().'/images/announcements/'.$announcement->image)){
             unlink(public_path().'/images/announcements/'.$announcement->image);
         }
         foreach($photos as $photo){
-            if(is_file(public_path().'/images/announcements/'.$image->route)){
+            if(is_file(public_path().'/images/announcements/'.$photo->route)){
                 unlink(public_path().'/images/announcements/'.$photo->route);
             }
         }

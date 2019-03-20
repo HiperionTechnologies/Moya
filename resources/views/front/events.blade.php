@@ -5,6 +5,7 @@
 	<div class="m-event">
 		<div class="m-event-info">
 			<h1 class="m-title-block">Próximo Evento</h1>
+			<h2 class="m-event-title">{{$event->ubication->name}}</h2>
 			<h2 class="m-event-title">{{$event->name}}</h2>
 			<div class="m-event-description">{{$event->description}}</div>
 			<div class="m-event-date">

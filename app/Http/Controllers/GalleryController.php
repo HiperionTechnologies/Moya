@@ -21,7 +21,7 @@ class GalleryController extends Controller
 
     public function store($event){
     	$event = Event::findOrFail($event);
-        $path = 'events/';
+        $path = 'images/events/';
 
         foreach(request()->gallery as $img){
             $image = Image::make($img);
@@ -56,24 +56,24 @@ class GalleryController extends Controller
     public function update($event, $id){
         $event = Event::findOrFail($event);
         $image = Gallery::findOrFail($id);
-        $path = 'events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
+        $path = 'images/events/';//Storage::disk('event')->getDriver()->getAdapter()->getPathPrefix();
         $img = Image::make(request()->gallery);
         $name = $event->name.$this->random_string().'.jpg';
-        if($image->width() > 1500){
-            $image->resize(1500, null, function ($constraint) {
+        if($img->width() > 1500){
+            $img->resize(1500, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
         }
-        else if($image->height() > 1024){
-           $image->resize(null, 1024, function ($constraint) {
+        else if($img->height() > 1024){
+           $img->resize(null, 1024, function ($constraint) {
                $constraint->aspectRatio();
             });   
         }
         $img->save($path.$name, 70);
         $img->destroy();
 
-        if(is_file(public_path().'/events/'.$image->route)){
-            unlink(public_path().'/events/'.$image->route);
+        if(is_file(public_path().'/images/events/'.$image->route)){
+            unlink(public_path().'/images/events/'.$image->route);
         }
         
         $image->route = $name;
@@ -83,8 +83,8 @@ class GalleryController extends Controller
 
     public static function destroy($event, $id){
         $image = Gallery::findOrFail($id);
-        if(is_file(public_path().'/events/'.$image->route)){
-            unlink(public_path().'/events/'.$image->route);
+        if(is_file(public_path().'/images/events/'.$image->route)){
+            unlink(public_path().'/images/events/'.$image->route);
         }
         Gallery::destroy($id);
         return back();
