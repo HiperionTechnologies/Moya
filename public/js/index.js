@@ -60,36 +60,22 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 39:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(40);
-
-
-/***/ }),
-
-/***/ 40:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(41);
-
-/***/ }),
-
-/***/ 41:
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 $(function () {
 
-    var WOW = __webpack_require__(42);
+    var WOW = __webpack_require__(3);
 
     window.wow = new WOW.WOW({
         boxClass: 'js-block-watch',
-        animateClass: 'is-visible'
+        animateClass: 'is-visible',
+        live: false
     });
 
     function Init() {
@@ -101,7 +87,7 @@ $(function () {
 
 /***/ }),
 
-/***/ 42:
+/***/ 3:
 /***/ (function(module, exports) {
 
 (function() {
@@ -618,6 +604,21 @@ $(function () {
 
 }).call(this);
 
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(42);
+
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(2);
 
 /***/ })
 

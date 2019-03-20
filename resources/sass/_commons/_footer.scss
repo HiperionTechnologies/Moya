@@ -9,10 +9,12 @@ footer{
     display: flex;
     justify-content: center;
 }
-.m-footer-moya-text{
+.m-footer-moya-img{
     width: 110px;
+    opacity: 0;
+    transition: opacity .3s ease;
 }
-.m-footer-moya-text img{
+.m-footer-moya-img img{
     min-width: 100%;
     width: 100%;
 }
@@ -27,6 +29,8 @@ footer{
     padding: 0px 10px;
     color: #ffffff;
     font-size: 24px;
+    opacity: 0;
+    transition: opacity .3s ease;
     &:hover{
         color: $verde_moya;
     }
@@ -44,6 +48,8 @@ footer{
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity .3s ease;
     &:hover{
         color: $verde_moya;
     }
@@ -56,6 +62,26 @@ footer{
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
+    p{
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+}
+footer{
+    .m-footer-moya-img,
+    .m-footer-social-link,
+    .m-footer-legals a,
+    .m-footer-copy p{
+        transition-delay: 0.3s;
+    }
+}
+footer.is-visible{
+    .m-footer-moya-img,
+    .m-footer-social-link,
+    .m-footer-legals a,
+    .m-footer-copy p{
+        opacity: 1;
+    }
 }
 
 @media (min-width: 768px){

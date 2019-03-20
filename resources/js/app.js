@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('./moya');
+require('./commons/commons');
 
 // window.Vue = require('vue');
 

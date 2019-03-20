@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 
-<div id="m-cover" class="m-cover">
+<div id="m-cover" class="m-cover js-block-watch">
 	<div class="m-cover-bg" style="background-image:url({{$path.$banner->route}})"></div>
 	<div class="m-cover-info">
 		<h1 class="m-title-block">{{$banner->title}}</h1>
@@ -12,13 +12,13 @@
 			</div>
 		</a>
 	</div>
-	<div class="m-cover-scroll">
-		<div class="m-cover-scroll-label">scroll</div>
-		<div class="m-cover-scroll-line"></div>
-	</div>
 	<div class="m-cover-event">Edicion Navideña</div>
 </div>
-<div class="m-weare">
+<div class="m-scroll js-block-watch">
+	<div class="m-scroll-label">scroll</div>
+	<div class="m-scroll-line"></div>
+</div>
+<div class="m-weare js-block-watch">
 	<div class="m-weare-info">
 		<h2 class="m-title-block">Acerca de Moya</h2>
 		<p> <strong>MOYA</strong> tiene sus inicios en la necesidad social y económica de acercar a los habitantes de la ciudad de Saltillo una alternativa de productos de la mejor calidad, creados localmente y sobre todo sustentables.
@@ -29,7 +29,7 @@
 		<p><strong>MOYA</strong> es hoy un referente local de calidad, talento y sustentabilidad, tangibles en cada aspecto de esta iniciativa y con el entero apoyo del gobierno de la ciudad de Saltillo.</p>
 	</div>
 </div>
-<div class="m-statistics">
+<div class="m-statistics js-block-watch">
 	<h2 class="m-statistics-title m-title-block">Nuestros números</h2>
 	<div class="m-statistics-container container">
 		<div class="m-statistics-box places">
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 </div>
-<div class="m-banner">
+<div class="m-banner js-block-watch">
 	<div class="m-banner-bg" style="background-image:url({{ asset('images/bg_login.jpg') }})"></div>
 	<div class="m-banner-bg-shape"></div>
 	<div class="m-banner-content">

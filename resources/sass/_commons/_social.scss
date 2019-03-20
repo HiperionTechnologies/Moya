@@ -4,10 +4,14 @@
     transform: translateY(-50%);
     top: 50%;
     left: 25px;
-    opacity: 1;
-    transition: opacity .3s ease;
+    ul{
+        opacity: 1;
+        transition: opacity .3s ease;
+    }
     &.m-hidden{
-        opacity: 0;
+        ul{
+            opacity: 0;
+        }
     }
 }
 .m-social li{
@@ -40,11 +44,25 @@
 @media (min-width: 768px){
     .m-social{
         display: block;
-        left: 0px;
+        left: -40px;
+        opacity: 0;
+        transition: left 1s ease, opacity 0.5s ease;
+        transition-delay: 1s;
+        &.is-visible{
+            left: 0;
+            opacity: 1;
+        }
     }
 }
 @media (min-width: 1024px){
     .m-social{
-        left: 25px;
+        left: -50px;
+        opacity: 0;
+        transition: left 1s ease, opacity 0.5s ease;
+        transition-delay: 1s;
+        &.is-visible{
+            left: 25px;;
+            opacity: 1;
+        }
     }
 }

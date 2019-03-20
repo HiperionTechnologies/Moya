@@ -19,6 +19,7 @@ $(function(){
         $(window).scroll(function(event){
             var posicionScroll = $(this).scrollTop();
             if (posicionScroll > (parseInt(positionFooter)-parseInt(windowHeight))){
+                console.log("hide");
                 $("#m-social").addClass("m-hidden");
             } else {
                 $("#m-social").removeClass("m-hidden");

@@ -12,6 +12,10 @@
 }
 .m-weare-info .m-title-block{
     margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.5s;
 }
 .m-weare-info .m-title-block::before{
     background-color: #000;
@@ -22,9 +26,21 @@
     letter-spacing: 1px;
     text-align: center;
     font-weight: 300;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.6s;
 }
 .m-weare-info strong{
     font-family: 'Roboto', sans-serif;
+}
+
+.m-weare.is-visible{
+    .m-weare-info .m-title-block,
+    .m-weare-info p{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* statistics */
@@ -50,8 +66,26 @@
     align-items: center;
     flex-direction: column;
     color: #000000;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
     &:hover{
         color: $verde_moya;
+    }
+    &:nth-child(1){
+        transition-delay: 0.6s;
+    }
+    &:nth-child(2){
+        transition-delay: 0.7s;
+    }
+    &:nth-child(3){
+        transition-delay: 0.8s;
+    }
+    &:nth-child(4){
+        transition-delay: 0.9s;
+    }
+    &:nth-child(5){
+        transition-delay: 1s;
     }
 }
 .m-statistics-icon{
@@ -74,11 +108,26 @@
 .m-statistics .m-title-block:before{
     background-color: #000;
 }
+.m-statistics .m-title-block{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.5s;
+}
+
+.m-statistics.is-visible{
+    .m-title-block,
+    .m-statistics-box{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* banner */
 .m-banner{
     position: relative;
     height: 350px;
+    overflow: hidden;
 }
 .m-banner-bg-shape,
 .m-banner-bg{
@@ -87,6 +136,10 @@
     width: 100%;
     top: 0;
     left: 0;
+    opacity: 0;
+    transform: scale(1.3);
+    transition: transform 1.5s ease, opacity .5s ease;
+    transition-delay: .5s;
 }
 .m-banner-bg{
     background-size: cover;
@@ -105,8 +158,17 @@
     justify-content: center;
     align-items: center;
 }
+.m-banner-content a,
+.m-banner-content p{
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 1s ease, opacity .3s ease;
+
+}
+
 .m-banner-content a{
     max-width: 300px;
+    transition-delay: 1.1s;
 }
 .m-banner-content p{
     font-size: 18px;
@@ -115,6 +177,21 @@
     font-weight: 300;
     color: #ffffff;
     text-align: center;
+    transition-delay: 1s;
+}
+
+//Animations
+.m-banner.is-visible .m-banner-bg,
+.m-banner.is-visible .m-banner-bg-shape{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.m-banner.is-visible .m-banner-content a,
+.m-banner.is-visible .m-banner-content p{
+    transform: translateY(0);
+    opacity: 1;
+
 }
 
 

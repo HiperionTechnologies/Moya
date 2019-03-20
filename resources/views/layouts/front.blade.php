@@ -39,10 +39,10 @@
     @endswitch -->
 </head>
 <body>
-    <header id="m-header">
+    <header id="m-header" class="js-block-watch">
         <div class="m-header-logo">
             <a href="{{route('moya',[request()->segment(1)])}}" title='MOYA'>
-            <img src="{{ asset('images/logo_moya.svg') }}" alt="Logotipo Moya">
+                <img src="{{ asset('images/logo_moya.svg') }}" alt="Logotipo Moya">
             </a>
         </div>
         <div class="m-header-nav">
@@ -61,9 +61,9 @@
     <main>
         @yield('content')
     </main>
-    <footer id="m-footer">
+    <footer id="m-footer" class="js-block-watch">
         <div class="m-footer-moya">
-            <div class="m-footer-moya-text">
+            <div class="m-footer-moya-img">
                 <img src="{{ asset('images/logo_moya_white.svg') }}" alt="Logotipo Moya">
             </div>
         </div>
@@ -80,7 +80,7 @@
             <p>&copy; 2018 MOYA - Mercado Orgánico Y de Artesanías</p>
         </div>
     </footer>
-    <div id="m-social" class="m-social">
+    <div id="m-social" class="m-social js-block-watch">
         <ul>
             <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>

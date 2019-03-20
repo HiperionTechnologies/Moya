@@ -4,7 +4,8 @@ $(function(){
 
     window.wow = new WOW.WOW({
         boxClass:     'js-block-watch',
-        animateClass: 'is-visible'
+        animateClass: 'is-visible',
+        live: false
     });
 
     function Init(){
