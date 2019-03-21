@@ -2,8 +2,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    display: block;
-    margin-bottom: 100px;
 }
 .m-event-info{
     position: relative;
@@ -14,48 +12,78 @@
 .m-event-map{
     position: relative;
     width: 100%;
-    height: 500px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    img{
+        width: 100%;
+        min-width: 100%;
+    }
 }
-.m-title-block:before{
+.m-event .m-title-block{
+    margin-top: 40px;
+}
+.m-event .m-title-block:before{
     background-color: #000;
 }
 .m-event-title{
-    padding-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 10px;
 }
 .m-event-description,
 .m-event-date,
 .m-event-place{
-    font-size: 16px;
-}
-.m-event-description{
+    font-size: 14px;
+    letter-spacing: 0.5px;
     padding-bottom: 15px;
-    letter-spacing: .5px;
+    span{
+        display: block;
+        font-size: 11px;
+        color: $verde_moya;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 }
-.m-event-date{
-    letter-spacing: .5px;
-    font-weight: bold;
-    padding-bottom: 10px;
+.m-event-howtoget{
+    display: inline-block
 }
-.m-event-place{
-    letter-spacing: .5px;
-    font-weight: bold;
-}
-.m-cover-info{
-    display: none;
+.m-event-date-container,
+.m-event-place-container{
+    display: flex;
+    justify-content: flex-start;
+    i{
+        margin-right: 20px;
+        font-size: 18px;
+        color: $verde_moya;
+    }
 }
 @media (min-width: 1024px){
-    .m-event{
+    .m-event-container{
         display: flex;
+        justify-content: space-around;
     }
     .m-event-info{
-        width: 30%;
+        width: 40%;
         margin-bottom: 0px;
         padding-right: 20px;
         padding-left: 0px;
     }
+    .m-event .m-title-block{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .m-event-title{
+        font-size: 24px;
+    }
+    .m-event-description,
+    .m-event-date,
+    .m-event-place{
+        padding-bottom: 30px;
+    }
     .m-event-map{
-        width: 70%;
+        width: 45%
     }
 }

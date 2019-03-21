@@ -77,7 +77,7 @@
             <a href='#' class="m-footer-privacy">Aviso de privacidad</a>
         </div>
         <div class="m-footer-copy">
-            <p>&copy; 2018 MOYA - Mercado Orgánico Y de Artesanías</p>
+            <p>&copy; 2019 MOYA - Mercado Orgánico Y de Artesanías</p>
         </div>
     </footer>
     <div id="m-social" class="m-social js-block-watch">

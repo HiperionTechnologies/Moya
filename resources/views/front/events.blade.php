@@ -3,30 +3,34 @@
 
 @if($event)
 	<div class="m-event">
-		<div class="m-event-info">
-			<h1 class="m-title-block">Próximo Evento</h1>
-			<h2 class="m-event-title">{{$event->ubication->name}}</h2>
-			<h2 class="m-event-title">{{$event->name}}</h2>
-			<div class="m-event-description">{{$event->description}}</div>
-			<div class="m-event-date">
-				@foreach($event->dates as $dkey => $date)
-					<p>-----Fecha {{$dkey}}: {{$date->date}}</p>
-					<p>-----HORARIOS</p>
-					@foreach($date->schedules as $skey => $schedule)
-						<p>----------Horario {{$skey}}: {{$schedule->time}}</p>
-						<p>----------ITINERARIOS</p>
-						@foreach($schedule->itineraries as $ikey => $itinerary)
-							<p>---------------Itinerario {{$ikey}}: {{$itinerary->itinerary}} - {{$itinerary->time}}</p>
+		<div class="m-title-block">Próximo Evento</div>
+		<div class="m-event-container">
+			<div class="m-event-info">
+				<h1 class="m-event-title">{{$event->name}}</h1>
+				<div class="m-event-description">{{$event->description}}</div>
+				<div class="m-event-date-container">
+					<i class="fas fa-calendar-alt"></i>
+					<div class="m-event-date">
+						<span>Fecha</span>
+						@foreach($event->dates as $dkey => $date)
+							{{ date('d-M-Y', strtotime($date->date)) }}
 						@endforeach
-					@endforeach
-				@endforeach
+					</div>
+				</div>
+				<div class="m-event-place-container">
+					<i class="fas fa-map-marker-alt"></i>
+					<div class="m-event-place">
+						<span>Lugar</span>
+						<strong>{{$event->ubication->name}}</strong>, {{$event->ubication->street}} {{$event->ubication->number}}, {{$event->ubication->colony}} {{$event->ubication->sede->city}}
+					</div>
+				</div>
+				<a href="http://maps.google.com/maps?&z=15&mrt=yp&t=k&q={{$event->ubication->latitude}}+{{$event->ubication->longitude}}" class="m-event-howtoget m-btn-black" target="_blank">
+					Como llegar
+				</a>
 			</div>
-			<div class="m-event-place">
-				{{$event->ubication->street}} {{$event->ubication->number}}, {{$event->ubication->colony}} {{$event->ubication->sede->city}}
+			<div class="m-event-map">
+				<img src="{{$path.$event->image}}" alt="Ubicación de {{$event->name}}">
 			</div>
-		</div>
-		<div class="m-event-map">
-			<img src="{{$path.$event->image}}" alt="Ubicación de {{$event->name}}">
 		</div>
 	</div>
 @endif
