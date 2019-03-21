@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 
-<div class="m-announcement">
+<div class="m-announcement js-block-watch">
 	<div class="m-announcement-title">
 		<h2 class="m-title-block">Nueva Convocatoria</h2>
 		<p>Si estas interesado en participar en MOYA – Mercado Orgánico Y de Artesanías como expositor, compártenos tus datos y nos pondremos en contacto contigo.</p>

@@ -11,9 +11,9 @@ header .m-header-logo a{
     display: block;
     width: 80px;
     text-decoration: none;
-    opacity: 0;
-    transition: opacity .3s ease;
-    transition-delay: 0.3s;
+    // opacity: 0;
+    // transition: opacity .3s ease;
+    // transition-delay: 0.3s;
 }
 header .m-header-logo a img{
     min-width: 100%;
@@ -53,9 +53,9 @@ header .m-header-nav nav .m-header-nav-link{
     font-weight: 700;
     text-decoration: none;
     padding: 0px 20px;
-    opacity: 0;
-    transition: opacity .3s ease;
-    transition-delay: 0.3s;
+    // opacity: 0;
+    // transition: opacity .3s ease;
+    // transition-delay: 0.3s;
     &:hover{
         color: $verde_moya;
     }
@@ -70,12 +70,12 @@ header .m-header-nav nav .m-header-nav-link:last-child{
     padding-right: 0xp;
 }
 
-header.is-visible{
-    .m-header-nav nav .m-header-nav-link,
-    .m-header-logo a{
-        opacity: 1;
-    }
-}
+// header.is-visible{
+//     .m-header-nav nav .m-header-nav-link,
+//     .m-header-logo a{
+//         opacity: 1;
+//     }
+// }
 @media (min-width: 768px){
     header{
         border-left: 50px solid #ffffff;

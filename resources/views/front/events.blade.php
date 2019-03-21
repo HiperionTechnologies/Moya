@@ -2,7 +2,7 @@
 @section('content')
 
 @if($event)
-	<div class="m-event">
+	<div class="m-event js-block-watch">
 		<div class="m-title-block">Próximo Evento</div>
 		<div class="m-event-container">
 			<div class="m-event-info">

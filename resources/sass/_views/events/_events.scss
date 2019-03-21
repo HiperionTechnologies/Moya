@@ -2,6 +2,20 @@
     position: relative;
     width: 100%;
     height: 100%;
+    &.is-visible{
+        .m-event-title,
+        .m-title-block,
+        .m-event-description,
+        .m-event-date-container,
+        .m-event-place-container,
+        .m-event-howtoget{
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .m-event-map{
+            opacity: 1;
+        }
+    }
 }
 .m-event-info{
     position: relative;
@@ -14,6 +28,9 @@
     width: 100%;
     margin-bottom: 50px;
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 1s ease;
+    transition-delay: 0.5s;
     img{
         width: 100%;
         min-width: 100%;
@@ -21,6 +38,10 @@
 }
 .m-event .m-title-block{
     margin-top: 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.5s;
 }
 .m-event .m-title-block:before{
     background-color: #000;
@@ -32,6 +53,10 @@
     text-transform: uppercase;
     font-weight: 700;
     padding-bottom: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.5s;
 }
 .m-event-description,
 .m-event-date,
@@ -47,20 +72,42 @@
         letter-spacing: 1px;
     }
 }
+.m-event-description{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.6s;
+}
 .m-event-howtoget{
-    display: inline-block
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.9s
 }
 .m-event-date-container,
 .m-event-place-container{
     display: flex;
     justify-content: flex-start;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
     i{
         margin-right: 20px;
         font-size: 18px;
         color: $verde_moya;
     }
 }
+.m-event-date-container{
+    transition-delay: 0.7s;
+}
+.m-event-place-container{
+    transition-delay: 0.8s;
+}
 @media (min-width: 1024px){
+    .m-event{
+        margin-bottom: 40px;
+    }
     .m-event-container{
         display: flex;
         justify-content: space-around;
@@ -84,6 +131,7 @@
         padding-bottom: 30px;
     }
     .m-event-map{
-        width: 45%
+        width: 45%;
+        margin-bottom: 0px;
     }
 }
