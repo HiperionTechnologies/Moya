@@ -12580,10 +12580,25 @@ footer {
   width: 100%;
   padding-bottom: 50px;
   text-align: center;
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 1s ease;
+  transition: opacity 0.5s ease, -webkit-transform 1s ease;
+  transition: transform 1s ease, opacity 0.5s ease;
+  transition: transform 1s ease, opacity 0.5s ease, -webkit-transform 1s ease;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
 }
 
 .m-exhibitors-wearemoya img {
   width: 250px;
+}
+
+.m-exhibitors-wearemoya.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .m-exhibitors-box {
@@ -12594,6 +12609,21 @@ footer {
   -webkit-box-shadow: 0 10px 20px 0 rgba(50, 50, 50, 0.1);
           box-shadow: 0 10px 20px 0 rgba(50, 50, 50, 0.1);
   margin-bottom: 40px;
+  opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 1s ease;
+  transition: opacity 0.5s ease, -webkit-transform 1s ease;
+  transition: transform 1s ease, opacity 0.5s ease;
+  transition: transform 1s ease, opacity 0.5s ease, -webkit-transform 1s ease;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.m-exhibitors-box.is-visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .m-exhibitors-box-bg {

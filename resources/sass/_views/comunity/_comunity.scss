@@ -11,8 +11,16 @@
     width: 100%;
     padding-bottom: 50px;
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.4s;
     img{
         width: 250px;
+    }
+    &.is-visible{
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 .m-exhibitors-box{
@@ -22,6 +30,14 @@
     overflow: hidden;
     box-shadow: 0 10px 20px 0 rgba(50,50,50,0.1);
     margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 1s ease, opacity 0.5s ease;
+    transition-delay: 0.5s;
+    &.is-visible{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .m-exhibitors-box-bg{
     position: relative;

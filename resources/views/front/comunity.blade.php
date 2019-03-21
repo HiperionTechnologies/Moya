@@ -2,11 +2,11 @@
 @section('content')
 
 <div class="m-exhibitors">
-	<div class="m-exhibitors-wearemoya">
+	<div class="m-exhibitors-wearemoya js-block-watch">
 		<img src="{{ asset('images/somosmoya.svg') }}" alt="somos moya">
 	</div>
-	@foreach($announcements as $announcement)
-	<div class="m-exhibitors-box">
+	@foreach($announcements as $key => $announcement)
+	<div class="m-exhibitors-box js-block-watch" data-index={{$key}}>
 		<div class="m-exhibitors-box-bg" style="background-image:url({{$path.$announcement->image}})"></div>
 		<div class="m-exhibitors-box-content">
 			<div class="m-exhibitors-title">{{$announcement->brand}}</div>
