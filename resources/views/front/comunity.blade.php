@@ -12,7 +12,19 @@
 			<div class="m-exhibitors-title">{{$announcement->brand}}</div>
 			<div class="m-exhibitors-social">
 				@foreach($announcement->socialNetworks as $social)
-					<a href="{{$social->link}}" class="m-exhibitors-social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+					<a href="{{$social->link}}" class="m-exhibitors-social-link" target="_blank">
+						@switch($social->name)
+							@case('facebook')
+								<i class="fab fa-facebook-f"></i>
+								@break
+							@case('instagram')
+								<i class="fab fa-instagram"></i>
+								@break
+							@case('twitter')
+								<i class="fab fa-twitter"></i>
+								@break
+						@endswitch
+					</a>
 				@endforeach
 			</div>
 		</div>

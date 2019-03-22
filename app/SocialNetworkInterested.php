@@ -10,7 +10,7 @@ class SocialNetworkInterested extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'id', 'link', 'idInterested',
+    	'id', 'name', 'link', 'idInterested',
     ];
 
     public function interested(){

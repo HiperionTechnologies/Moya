@@ -133,18 +133,21 @@ class FrontController extends Controller
 
         if(request()->facebook){
             SocialNetwork::create([
+                'name' => 'facebook',
                 'link' => request()->facebook,
                 'idAnnouncement' => $announcement->id,
             ]);
         }
         if(request()->instagram){
             SocialNetwork::create([
+                'name' => 'instagram',
                 'link' => request()->instagram,
                 'idAnnouncement' => $announcement->id,
             ]);
         }
         if(request()->twitter){
             SocialNetwork::create([
+                'name' => 'twitter',
                 'link' => request()->twitter,
                 'idAnnouncement' => $announcement->id,
             ]);
@@ -181,18 +184,21 @@ class FrontController extends Controller
 
             if(request()->facebook){
                 SocialNetworkInterested::create([
+                    'name' => 'facebook',
                     'link' => request()->facebook_interested,
                     'idInterested' => $interested->id,
                 ]);
             }
             if(request()->instagram){
                 SocialNetworkInterested::create([
+                    'name' => 'instagram',
                     'link' => request()->instagram_interested,
                     'idInterested' => $interested->id,
                 ]);
             }
             if(request()->twitter){
                 SocialNetworkInterested::create([
+                    'name' => 'twitter',
                     'link' => request()->twitter_interested,
                     'idInterested' => $interested->id,
                 ]);

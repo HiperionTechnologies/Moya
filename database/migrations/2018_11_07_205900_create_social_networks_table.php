@@ -15,6 +15,7 @@ class CreateSocialNetworksTable extends Migration
     {
         Schema::create('social_networks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name',20);
             $table->string('link',250);
             $table->integer('idAnnouncement')->unsigned();
             $table->foreign('idAnnouncement')
