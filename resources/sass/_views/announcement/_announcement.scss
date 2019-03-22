@@ -65,6 +65,44 @@
     font-weight: 300;
 }
 
+//success page
+.m-success{
+    margin: 40px 0px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transition-delay: 0.5s;
+    text-align: center;
+    &.is-visible{
+        opacity: 1;
+    }
+}
+.m-success i{
+    font-size: 100px;
+    color: $verde_moya;
+    padding: 20px 0px;
+}
+.m-success-title{
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.m-success h2{
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.m-success p{
+    margin: 0;
+    font-size: 14px;
+}
+.m-success-sede{
+    margin-top: 20px;
+    font-size: 14px;
+}
+.m-success-date{
+    font-size: 14px;
+}
+
 @media (min-width: 768px){
     .m-announcement{
         padding: 0;
@@ -72,8 +110,17 @@
     .m-announcement-input-group{
         width: 45%;
     }
+    .m-success-title{
+        font-size: 28px;
+    }
+    .m-success p{
+        font-size: 16px;
+    }
+    .m-success-sede,
+    .m-success-date{
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 1024px){
-
 }

@@ -2,15 +2,16 @@
 @section('content')
 
 @if($announcement)
-<div class="card text-white bg-success mb-3">
-  	<div class="card-header">Registro Completado</div>
-  	<div class="card-body" align="center">
-    	<h4 class="card-title">{{$announcement->first_name}} {{$announcement->last_name}}</h4>
-    	<p class="card-text">Los datos de su convocatoria se han enviado exitosamente</p>
-    	<p class="card-text">Gracias por su preferencia</p>
-    	<p class="card-text" align="right"> {{$announcement->sede->city}} </p>
-    	<p class="card-text" align="right"> {{$announcement->created_at}} </p>
-  	</div>
+<div class="m-success js-block-watch">
+	<div class="m-success-title">Registro Completado</div>
+	<i class="far fa-check-circle"></i>
+	<div class="m-success-content">
+		<h2>{{$announcement->first_name}} {{$announcement->last_name}}</h4>
+		<p>Los datos de su convocatoria se han enviado exitosamente</p>
+		<p>Gracias por su preferencia</p>
+		<div class="m-success-sede"> {{$announcement->sede->city}} </div>
+		<div class="m-success-date"> {{ date('d-M-y', strtotime($announcement->created_at)) }} </div>
+	</div>
 </div>
 @endif
 
