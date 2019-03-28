@@ -31,6 +31,7 @@
 			<p>¿Los productos se crean localmente? : {{$announcement->local}} </p>
 			<p>¿Los productos son artesanalaes? : {{$announcement->artesanal}} </p>
 			<p>¿Se usará mobiliario especial para el stand? : {{$announcement->furniture}} </p>
+			<p> {{$announcement->special_furniture}} </p>
 
 			<h4>Respuesta - ¿Porque crees que tu negocio entra en MOYA?</h4>
 			<p> {{$announcement->answer_moya}} </p>

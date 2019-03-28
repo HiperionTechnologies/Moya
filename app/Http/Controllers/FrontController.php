@@ -127,6 +127,7 @@ class FrontController extends Controller
             'local' => request()->local,
             'artesanal' => request()->artesanal,
             'furniture' => request()->furniture,
+            'special_furniture' => request()->special_furniture,
             'idSede' => $idSede->id,
             'idCategory' => request()->idCategory
         ]);
@@ -182,21 +183,21 @@ class FrontController extends Controller
                 'phone' => request()->phone_interested
             ]);
 
-            if(request()->facebook){
+            if(request()->facebook_interested){
                 SocialNetworkInterested::create([
                     'name' => 'facebook',
                     'link' => request()->facebook_interested,
                     'idInterested' => $interested->id,
                 ]);
             }
-            if(request()->instagram){
+            if(request()->instagram_interested){
                 SocialNetworkInterested::create([
                     'name' => 'instagram',
                     'link' => request()->instagram_interested,
                     'idInterested' => $interested->id,
                 ]);
             }
-            if(request()->twitter){
+            if(request()->twitter_interested){
                 SocialNetworkInterested::create([
                     'name' => 'twitter',
                     'link' => request()->twitter_interested,

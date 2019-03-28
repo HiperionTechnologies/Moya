@@ -28,10 +28,10 @@
 							@include('event.table_itineraries',[$schedule])
 							@include('schedule.modal')
 						@endforeach	
-						@include('date.modal')
 					@else
 						<a href="{{URL::action('ScheduleController@create',[$event->id, $date->id])}}" class="btn btn-primary btn-sm" style='margin-bottom:20px;'>Nuevo Horario</a>
-						@endif
+					@endif
+					@include('date.modal')
 				@endforeach
 			@else
 				<a href="{{URL::action('DateController@create',[$event->id])}}" class="btn btn-primary btn-sm" style='margin-bottom:20px;'> Nueva Fecha</a>

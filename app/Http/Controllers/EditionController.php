@@ -62,7 +62,7 @@ class EditionController extends Controller
             }
         }
 
-    	//Edition::destroy($id);
+    	Edition::destroy($id);
     	return back();	
     }
 }

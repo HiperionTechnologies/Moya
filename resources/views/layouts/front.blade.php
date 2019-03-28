@@ -97,8 +97,8 @@
         <div class="m-lightbox-menu_body">
             <nav>
                 <a href="{{route('eventos',[request()->segment(1)])}}" class="m-lightbox-menu_link">Eventos</a>
-                <a href="{{route('comunidad',[request()->segment(1)])}}" class="m-lightbox-menu_link">Convocatoria</a>
-                <a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-lightbox-menu_link">Comunidad</a>
+                <a href="{{route('convocatoria',[request()->segment(1)])}}" class="m-lightbox-menu_link">Convocatoria</a>
+                <a href="{{route('comunidad',[request()->segment(1)])}}" class="m-lightbox-menu_link">Comunidad</a>
             </nav>
         </div>
     </div>

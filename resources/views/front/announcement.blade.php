@@ -113,26 +113,30 @@
 		</div>
 		<div class="m-announcement-input-group">
 			<div class="form-group">
-				{!!Form::label('furniture','¿Necesita de mobiliario especial para su stand?',['class'=>'control-label'])!!}
-			</div>
-			<div class="form-group">
-				{!!Form::radio('furniture', 'Si',['class'=>'form-control'])!!}
-				{!!Form::label('si','Si',['class'=>'control-label'])!!}
-			</div>
-			<div class="form-group">
-				{!!Form::radio('furniture', 'No',['class'=>'form-control'])!!}
-				{!!Form::label('no','No',['class'=>'control-label'])!!}
-			</div>
-		</div>
-		<div class="m-announcement-input-group">
-			<div class="form-group">
 				{!!Form::label('idCategory','Categoria*',['class'=>'control-label'])!!}
 				{!!Form::select('idCategory',$categories,null,['class'=>'form-control m-form-select','placeholder'=>'Seleccione una categoria'])!!}
 			</div>
 		</div>
 		<div class="m-announcement-input-group">
 			<div class="form-group">
-				{!!Form::label('photo','Fotos',['class'=>'control-label'])!!}
+				{!!Form::label('furniture','¿Necesita de mobiliario especial para su stand?',['class'=>'control-label'])!!}
+			</div>
+			<div class="form-group">
+				<input type="radio" name="furniture" id="furniture" value="Si" onClick="checkRadio(this)">
+				{!!Form::label('si','Si',['class'=>'control-label'])!!}
+			</div>
+			<div class="form-group">
+				<input type="radio" name="furniture" id="furniture" value="No" onClick="checkRadio(this)">
+				{!!Form::label('no','No',['class'=>'control-label'])!!}
+			</div>
+			<div class="form-group" style="display:none" id="addfurniture">
+				{!!Form::label('special_furniture','Especifique',['class'=>'control-label'])!!}
+				{!!Form::textarea('special_furniture',null,['class'=>'form-control','placeholder'=>'Escribe todo el mobiliario especial que necesita'])!!}
+			</div>
+		</div>
+		<div class="m-announcement-input-group">
+			<div class="form-group">
+				{!!Form::label('photo','Fotos de Galeria',['class'=>'control-label'])!!}
 				<input type="file" class="form-control" name="photos[]" id="photos" onChange="validateImages()" multiple />
 			</div>
 		</div>
@@ -185,6 +189,13 @@
 
 
 <script>
+	function checkRadio(radio){
+		var textarea = document.getElementById("addfurniture");
+		if(radio.checked == true && radio.value == "Si")
+			textarea.style.display = "block";
+		else
+			textarea.style.display = "none";
+	}
 
 	function validateImages(){
 		var photos = document.getElementById("photos");

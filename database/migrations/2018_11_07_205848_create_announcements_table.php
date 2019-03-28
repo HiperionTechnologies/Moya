@@ -26,6 +26,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('local',3);
             $table->string('artesanal',3);
             $table->string('furniture',3);
+            $table->string('special_furniture',500)->nullable();
             $table->integer('idSede')->unsigned();
             $table->foreign('idSede')
                   ->references('id')

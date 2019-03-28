@@ -36,7 +36,7 @@ class AnnouncementFormRequest extends FormRequest
             'local' => 'required',
             'artesanal' => 'required',
             'furniture' => 'required',
-            //'idSede' => 'required',
+            'special_furniture' => 'max:500',
             'idCategory' => 'required',
             'photos[0]' => 'image',
             'name_interested' => 'max:50',

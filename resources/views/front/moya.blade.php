@@ -6,9 +6,9 @@
 	<div class="m-cover-info">
 		<h1 class="m-title-block">{{$banner->title}}</h1>
 		<p>{{$banner->description}}</p>
-		<a href="#" class="m-cover-link m-btn-black">
+		<a href="{{route('eventos',[request()->segment(1)])}}" class="m-cover-link m-btn-black">
 			<div class="m-cover-link-label">
-				Explora Edición
+				Ver Evento
 			</div>
 		</a>
 	</div>
